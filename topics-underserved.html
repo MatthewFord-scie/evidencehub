@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Underserved populations</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><img src="images/EquityHubLogo-White.png" alt="Logo" style="width: 50%" /></a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li> <a href="index.html">About the Hub</a></li>
+							<li class="active"><a href="topicsmain.html">Our topics</a></li>
+							<li><a href="chartoftheweek.html">Chart of the week</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Underserved Populations</h1>
+									<div class="box"><p>We are using the term <em>'underserved'</em> here to mean populations that face inequities in accessing and receiving care, resulting in poorer health outcomes compared to the general population.
+										We have broken this down into <em>Groups by Demographic Factors (Age, Sex, Ethnicity, Education)</em>, <em>Groups by Social and Economic Factors</em> and <em>Groups by Health Status</em>.
+										<br>The definition of "underserved" is context-specific, shaped by the specific circumstances, needs, and characteristics of the population. It highlights the importance of recognising and addressing the disparities in care provision to ensure equitable health outcomes for all individuals.</p></div>
+									<br>
+									<p>The chart below visually represents the percentages of adults, by ethnicity, in England receiving long-term support from social care services,
+										alongside the overall ethnic percentages within the population. <br>
+										This dual representation provides insight into social care equity, highlighting potential disparities across different ethnic groups.</p> <br>
+
+									<div class="chart-container">
+<!--										<canvas id="myChart2" style="width:100%;max-width:700px;height:500px"></canvas>-->
+										<canvas id="ethnicChart" style="width:100%"></canvas>
+									</div>
+									<div class="box2"><p>The chart indicates significant variations in the percentage of adults receiving long-term support among ethnic groups. For instance, the data
+										shows that while 79.6% of long-term support recipients identify as White British, the overall percentage of this group within the population is lower.
+										This disparity suggests that White British individuals may be accessing social care services at a disproportionately higher rate compared to other ethnic groups.
+										<br> <br>
+										Groups such as Indian, Pakistani, and Black African individuals show relatively low percentages of long-term support recipients, despite representing a sizeable segment of the population.
+										This raises concerns about accessibility and equity in social care provision for these communities.</p>
+									</div>
+								</header>
+
+								<p>But to fully understand and address social care equity, it’s essential to consider barriers faced by a range of underserved groups, as shown in the related evidence below. This additional data highlights
+									issues that not only affect ethnic minorities but also other communities who experience social care inequity. </p> <br>
+
+								<div class="stats-section">
+									<h2>Key Statistics</h2>
+									<div class="stats-container">
+										<div class="stat-box">Homeless people in London have an average of <b>7 long-term health conditions</b> surpassing the average health profile of a 90-year-old</div>
+										<div class="stat-box"><b>23%</b> of LGBTQ+ individuals in residential care reported that being open about their identity negatively impacted the care they received</div>
+										<div class="stat-box">People from Roma, Gypsy, and Traveller communities live <b>10 to 25 years shorter</b> than the wider population and often experience chronic health conditions.</div>
+									</div>
+								</div>
+								<br>
+								<div class="search-container">
+									<input type="text" id="searchInput" placeholder="Search for evidence..." />
+								</div>
+								<div class="info-module">
+									<button class="info-toggle" data-quality="2">Barriers for LGBTQ+ Individuals</button>
+									<div class="info-content">
+										<div class="reference-quality">
+											<div class="reference">
+												<h3>Reference</h3>
+												<p>[Author(s), Year, Title, Journal, etc.]</p>
+											</div>
+											<div class="quality-indicator">
+												<span class="quality-label">Quality:</span>
+												<span class="quality-star" data-quality="1">&#9733;</span>
+												<span class="quality-star" data-quality="2">&#9733;</span>
+												<span class="quality-star" data-quality="3">&#9733;</span>
+											</div>
+										</div>
+
+										<h3>Key Messages</h3>
+										<ul>
+											<li>Message 1: Brief description of key message.</li>
+											<li>Message 2: Brief description of key message.</li>
+											<li>Message 3: Brief description of key message.</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="info-module">
+									<button class="info-toggle" data-quality="3">Barriers for Roma, Gypsy and Traveller individuals</button>
+									<div class="info-content">
+										<div class="reference-quality">
+											<div class="reference">
+												<header>
+													<h3>Reference</h3>
+													<p><b><a href="https://academic.oup.com/eurpub/article/28/1/74/4811973" target="_blank">McFadden et al. (2018).<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i> </a></b>  Gypsy, Roma and Traveller access to and engagement with <br>health services: a systematic review. The European Journal of Public Health</p>
+												</header>
+											</div>
+											<div class="quality-indicator">
+												<span class="quality-label">Quality:</span>
+												<span class="quality-star" data-quality="1">&#9733;</span>
+												<span class="quality-star" data-quality="2">&#9733;</span>
+												<span class="quality-star" data-quality="3">&#9733;</span>
+											</div>
+										</div>
+
+										<h3>Key Messages</h3>
+										<ul>
+											<li>Gypsy, Roma and Traveller communities are known to face some of the
+												starkest inequalities in health and social care access and outcomes amongst the UK.</li>
+											<li>Key issues involved with access to ASC include chronic exclusion from health determinants,
+												invisibility in datasets, distrust due to fear and discrimination, wrongful registration refusal
+												(could cite GP secret shopper study), digital exclusion, unequal health and social care access for nomadic populations, disparities in mental health access, and failure to address early onset of age-related conditions.</li>
+											<li>Message 3: Brief description of key message.</li>
+										</ul>
+									</div>
+
+								</div>
+
+								<div class="info-module">
+									<button class="info-toggle" data-quality="3">Barriers for individuals experiencing homelessness</button>
+									<div class="info-content">
+										<div class="reference-quality">
+											<div class="reference">
+												<header>
+													<h3>Reference</h3>
+													<p><b><a href="https://www.housinglin.org.uk/Topics/type/Issues-faced-by-people-who-are-homeless-in-accessing-health-and-social-care/" target="_blank">Housing LIN (2015).<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i></a></b> Issues faced by people who are homeless in accessing <br>
+														health and social care</p>
+												</header>
+											</div>
+											<div class="quality-indicator">
+												<span class="quality-label">Quality:</span>
+												<span class="quality-star" data-quality="1">&#9733;</span>
+												<span class="quality-star" data-quality="2">&#9733;</span>
+												<span class="quality-star" data-quality="3">&#9733;</span>
+											</div>
+										</div>
+
+										<h3>Key Messages</h3>
+										<ul>
+											<li>Individuals experiencing homelessness often face fragmented health and social care services,
+												which complicates access and continuity of care. The lack of coordinated support among agencies creates barriers
+												to meeting individuals' needs effectively. </li>
+
+											<li>Stigma and misconceptions about homeless people’s circumstances and needs persist within health and social care systems.
+												This stigma can lead to inadequate service provision and discourage homeless individuals from seeking necessary support. </li>
+
+											<li>This report highlights the importance of trauma-informed and person-centred care as
+												strategies to improve service engagement and outcomes for homeless individuals. Such approaches foster a supportive
+												environment that can build trust and better meet the complex needs of this population.</li>
+										</ul>
+									</div>
+
+								</div>
+								<div class="info-module">
+									<button class="info-toggle" data-quality="3">Experiences of young LGBTQ+ individuals</button>
+									<div class="info-content">
+										<div class="reference-quality">
+											<div class="reference">
+												<header>
+													<h3>Reference</h3>
+													<p><b><a href="https://research-portal.uea.ac.uk/en/publications/policy-and-practice-with-lesbian-gay-bisexual-trans-and-queer-lgb" target="_blank">Cossar & Belderson (2024).<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i></a></b> Policy and Practice with Lesbian, Gay, Bisexual, <br> Trans and Queer (LGBTQ+) Care-Experienced Young People—A National Survey of <br>Local Authorities in England</p>
+												</header>
+											</div>
+											<div class="quality-indicator">
+												<span class="quality-label">Quality:</span>
+												<span class="quality-star" data-quality="1">&#9733;</span>
+												<span class="quality-star" data-quality="2">&#9733;</span>
+												<span class="quality-star" data-quality="3">&#9733;</span>
+											</div>
+										</div>
+
+										<h3>Key Messages</h3>
+										<ul>
+											<li>Limited Policy and Data Collection: Local authorities generally lack specific policies or centralised systems for recording sexual orientation and gender identity (SOGI) data, although individual case records often contain this information. </li>
+											<li>Support Gaps for LGBTQ+ Youth: While authorities employ various methods to support LGBTQ+ youth, there are notable gaps in staff knowledge and confidence in addressing these needs.</li>
+											<li>Unequal Training Provision: Social workers more frequently receive training on LGBTQ+ issues than foster carers or residential staff, highlighting a need for broader, inclusive training across all roles.</li>
+										</ul>
+										<h3>Commentary</h3>
+										<p>Without dedicated policies or centralised recording of SOGI data, local authorities lack critical insights into the needs and experiences of LGBTQ+ individuals, making it harder to allocate resources effectively
+											or address disparities. The gaps in staff knowledge and confidence, especially among foster carers and residential staff, further risk inconsistent support for these young people.
+											Training disparities mean that while some youth might receive informed care, others may face misunderstandings or neglect due to staff unpreparedness. Addressing these gaps is essential to ensure that LGBTQ+ individuals can access care that is responsive, inclusive, and equitable, ultimately creating a safer and more supportive environment within social services.</p>
+									</div>
+								</div>
+								<div class="info-module">
+										<button class="info-toggle" data-quality="3">Black and minority ethnic communities accessing mental health services</button>
+										<div class="info-content">
+											<div class="reference-quality">
+												<div class="reference">
+													<header>
+														<h3>Reference</h3>
+														<p><b><a href="https://bmjopen.bmj.com/content/6/11/e012337.abstract" target="_blank">Memon et al. (2016).<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i></a></b>
+															Perceived barriers to accessing mental health services <br>among black and minority ethnic communities: a qualitative study in southeast England</p>
+													</header>
+												</div>
+												<div class="quality-indicator">
+													<span class="quality-label">Quality:</span>
+													<span class="quality-star" data-quality="1">&#9733;</span>
+													<span class="quality-star" data-quality="2">&#9733;</span>
+													<span class="quality-star" data-quality="3">&#9733;</span>
+												</div>
+											</div>
+											<h3>Key Messages</h3>
+											<ul>
+												<li>Personal and environmental factors such as stigma, cultural identity, reluctance to discuss distress, and financial challenges hinder individuals from recognising and accepting mental health problems and seeking help.</li>
+												<li>Long waiting times, language barriers, and poor communication negatively affect the relationship between service users and healthcare providers, leading to inadequate recognition of mental health needs.</li>
+												<li>There is a significant imbalance of power and authority in healthcare interactions, compounded by cultural naivety and discrimination, particularly affecting black and minority ethnic service users, alongside a lack of awareness about available services.</li>
+											</ul>
+											<h3>Commentary</h3>
+											<p>These factors highlight the critical importance of care equity in mental health services. When personal barriers, communication issues, and cultural insensitivity prevent individuals from receiving the support they need, it creates disparities in health outcomes. Care equity ensures that all individuals, regardless of their background or circumstances, can access appropriate mental health care.</p>
+										</div>
+
+								</div>
+								<div class="info-module">
+									<button class="info-toggle" data-quality="3">Evidence</button>
+									<div class="info-content">
+										<div class="reference-quality">
+											<div class="reference">
+												<header>
+													<h3>Reference</h3>
+													<p><b><a href="" target="_blank">Memon et al. (2016).<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i></a></b>
+														Perceived barriers to accessing mental health services <br>among black and minority ethnic communities: a qualitative study in southeast England</p>
+												</header>
+											</div>
+											<div class="quality-indicator">
+												<span class="quality-label">Quality:</span>
+												<span class="quality-star" data-quality="1">&#9733;</span>
+												<span class="quality-star" data-quality="2">&#9733;</span>
+												<span class="quality-star" data-quality="3">&#9733;</span>
+											</div>
+										</div>
+										<h3>Key Messages</h3>
+										<ul>
+											<li>Limited Policy and Data Collection: Local authorities generally lack specific policies or centralised systems for recording sexual orientation and gender identity (SOGI) data, although individual case records often contain this information. </li>
+											<li>Support Gaps for LGBTQ+ Youth: While authorities employ various methods to support LGBTQ+ youth, there are notable gaps in staff knowledge and confidence in addressing these needs.</li>
+											<li>Unequal Training Provision: Social workers more frequently receive training on LGBTQ+ issues than foster carers or residential staff, highlighting a need for broader, inclusive training across all roles.</li>
+										</ul>
+										<h3>Commentary</h3>
+										<p>Without dedicated policies or centralised recording of SOGI data, local authorities lack critical insights into the needs and experiences of LGBTQ+ individuals, making it harder to allocate resources effectively
+											or address disparities. The gaps in staff knowledge and confidence, especially among foster carers and residential staff, further risk inconsistent support for these young people.
+											Training disparities mean that while some youth might receive informed care, others may face misunderstandings or neglect due to staff unpreparedness. Addressing these gaps is essential to ensure that LGBTQ+ individuals can access care that is responsive, inclusive, and equitable, ultimately creating a safer and more supportive environment within social services.</p>
+									</div>
+
+								</div>
+								<div class="info-module">
+									<button class="info-toggle" data-quality="3">Evidence</button>
+									<div class="info-content">
+										<div class="reference-quality">
+											<div class="reference">
+												<header>
+													<h3>Reference</h3>
+													<p><b><a href="" target="_blank">Memon et al. (2016).<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i></a></b>
+														Perceived barriers to accessing mental health services <br>among black and minority ethnic communities: a qualitative study in southeast England</p>
+												</header>
+											</div>
+											<div class="quality-indicator">
+												<span class="quality-label">Quality:</span>
+												<span class="quality-star" data-quality="1">&#9733;</span>
+												<span class="quality-star" data-quality="2">&#9733;</span>
+												<span class="quality-star" data-quality="3">&#9733;</span>
+											</div>
+										</div>
+										<h3>Key Messages</h3>
+										<ul>
+											<li>Limited Policy and Data Collection: Local authorities generally lack specific policies or centralised systems for recording sexual orientation and gender identity (SOGI) data, although individual case records often contain this information. </li>
+											<li>Support Gaps for LGBTQ+ Youth: While authorities employ various methods to support LGBTQ+ youth, there are notable gaps in staff knowledge and confidence in addressing these needs.</li>
+											<li>Unequal Training Provision: Social workers more frequently receive training on LGBTQ+ issues than foster carers or residential staff, highlighting a need for broader, inclusive training across all roles.</li>
+										</ul>
+										<h3>Commentary</h3>
+										<p>Without dedicated policies or centralised recording of SOGI data, local authorities lack critical insights into the needs and experiences of LGBTQ+ individuals, making it harder to allocate resources effectively
+											or address disparities. The gaps in staff knowledge and confidence, especially among foster carers and residential staff, further risk inconsistent support for these young people.
+											Training disparities mean that while some youth might receive informed care, others may face misunderstandings or neglect due to staff unpreparedness. Addressing these gaps is essential to ensure that LGBTQ+ individuals can access care that is responsive, inclusive, and equitable, ultimately creating a safer and more supportive environment within social services.</p>
+									</div>
+
+								</div>
+								<br>
+								<div class="box">
+									<h3>Gaps in evidence</h3>
+								</div>
+								</section>
+						<ul class="actions special">
+							<li><a href="topicsmain.html" class="button primary">Back to topics</a></li>
+						</ul>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul>Images retrieved from The Centre for Ageing Better's Age-positive image library</ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+	</body>
+</html>
