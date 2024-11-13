@@ -5010,7 +5010,7 @@ body.is-touch .tiles article .content {
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
 	background-color: #eee;
-	color: #444;
+	color: #757474;
 	cursor: pointer;
 	padding: 18px;
 	width: 100%;
@@ -5096,20 +5096,25 @@ header {
 
 /* Button styling */
 .info-toggle {
-	background-color: #b9bcbc; /* Blue background */
+	background-color: #4CAF50; /* Blue background */
 	color: white;              /* White text */
 	cursor: pointer;           /* Pointer cursor on hover */
-	padding: 15px;            /* Padding for the button */
-	width: 100%;              /* Full width */
-	border: none;             /* No border */
-	text-align: left;         /* Align text to the left */
-	font-size: 16px;          /* Font size */
+	padding: 15px;             /* Padding for the button */
+	width: 100%;               /* Full width */
+	border: none;              /* No border */
+	outline: none;             /* Removes focus outline */
+	box-shadow: none;          /* Removes any shadow */
+	text-align: left;          /* Align text to the left */
+	font-size: 16px;           /* Font size */
 	transition: background-color 0.3s; /* Smooth background transition on hover */
+	border-radius: 5px;        /* Rounded corners */
 }
 
 /* Change button background color on hover */
 .info-toggle:hover {
-	background-color: #0056b3; /* Darker blue on hover */
+	background-color: #000000; /* Blue color on hover */
+	color: #ffffff;              /* Change text color to white */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
 }
 
 /* Content styling */
@@ -5180,3 +5185,121 @@ header {
 	border: 1px solid #ddd; /* Border style */
 	border-radius: 4px; /* Rounded corners */
 }
+
+/*STYLING FOR DIFFERENT GROUPS---------------------------------------*/
+/* Button styling for group 2 */
+.info-toggle2 {
+	background-color: #2196F3; /* Blue background */
+	color: white;              /* White text */
+	cursor: pointer;           /* Pointer cursor on hover */
+	padding: 15px;             /* Padding for the button */
+	width: 100%;               /* Full width */
+	border: none;              /* No border */
+	outline: none;             /* Removes focus outline */
+	box-shadow: none;          /* Removes any shadow */
+	text-align: left;          /* Align text to the left */
+	font-size: 16px;           /* Font size */
+	transition: background-color 0.3s; /* Smooth background transition on hover */
+	border-radius: 5px;        /* Rounded corners */
+}
+
+.info-module2 {
+	margin: 20px; /* Space around each module */
+}
+
+/* Change button background color on hover */
+.info-toggle2:hover {
+	background-color: rgb(27, 121, 197); /* Darker blue on hover */
+}
+
+/* Content styling */
+.info-content2 {
+	display: none;            /* Hidden by default */
+	padding: 15px;           /* Padding for the content */
+	background-color: #f9f9f9; /* Light grey background */
+	border: 1px solid #ddd;  /* Border for the content */
+	margin-top: 10px;        /* Space above content */
+	border-radius: 0;        /* No rounded corners */
+}
+
+/* Reference and quality container styling */
+.reference-quality2 {
+	display: flex;            /* Use flexbox for alignment */
+	justify-content: space-between; /* Space between reference and quality indicator */
+	align-items: center;      /* Center items vertically */
+}
+
+/* Quality indicator styling */
+.quality-indicator2 {
+	display: flex;            /* Flexbox for aligning stars */
+	align-items: center;      /* Center stars vertically */
+	margin-top: 10px;        /* Space above the quality indicator */
+}
+
+.quality-label2 {
+	margin-right: 8px;       /* Space between label and stars */
+	font-weight: bold;       /* Make label bold */
+}
+
+/* Styling for the key container */
+.key {
+	display: flex;
+	flex-direction: row; /* Horizontal layout */
+	gap: 10px;           /* Spacing between each button */
+	font-size: 14px;      /* Smaller font size */
+	padding: 10px 0;
+	align-items: stretch; /* Ensure items stretch to equal height */
+	justify-content: space-around; /* Distribute evenly */
+	width: 100%;          /* Full width of the container */
+}
+
+/* Styling for the key container */
+.key {
+	display: flex;
+	flex-direction: row; /* Horizontal layout */
+	gap: 10px;           /* Spacing between each button */
+	font-size: 14px;      /* Smaller font size */
+	padding: 10px 0;
+	align-items: stretch; /* Ensure items stretch to equal height */
+	justify-content: space-around; /* Distribute evenly */
+	width: 100%;          /* Full width of the container */
+}
+
+/* Styling for each key item as a button */
+.key-item {
+	color: white;             /* White text */
+	padding: 10px;            /* Padding for button-like appearance */
+	border-radius: 5px;       /* Slightly rounded corners */
+	text-align: center;       /* Center align text */
+	font-weight: bold;        /* Bold text */
+	cursor: pointer;          /* Pointer cursor on hover */
+	transition: background-color 0.3s; /* Smooth colour transition */
+	flex: 1;                  /* Make buttons expand to equal size */
+	min-width: 120px;         /* Ensure minimum width for readability */
+	display: flex;            /* Flexbox for centering text */
+	justify-content: center;  /* Horizontally center text */
+	align-items: center;      /* Vertically center text */
+	height: 60px;             /* Fixed height for buttons */
+	line-height: 1.2;         /* Reduced line height for tighter text */
+}
+
+/* Colours for each group button */
+.age-group {
+	background-color: #4CAF50; /* Green */
+}
+
+.socio-economic-group {
+	background-color: #2196F3; /* Blue */
+}
+
+.health-status-group {
+	background-color: #FF5722; /* Orange */
+}
+
+/* Optional: Hover effect to make it look more like a button */
+.key-item:hover {
+	opacity: 0.9;
+}
+
+
+

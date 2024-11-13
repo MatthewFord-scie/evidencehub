@@ -396,4 +396,36 @@
 		});
 	});
 
+
+	// 	Evidence collapsible 2 --------------------------------
+// JavaScript to handle the collapsible functionality for info module
+	document.addEventListener('DOMContentLoaded', function() {
+		const toggleButtons2 = document.querySelectorAll('.info-toggle2');
+
+		toggleButtons2.forEach(button => {
+			button.addEventListener('click', function() {
+				this.classList.toggle('active');
+				const content2 = this.nextElementSibling;
+
+				// Toggle the display of the content
+				if (content2.style.display === 'block') {
+					content2.style.display = 'none';
+				} else {
+					content2.style.display = 'block';
+				}
+
+				// Set quality based on the data attribute
+				const quality = parseInt(this.getAttribute('data-quality'));
+				setQuality(content2, quality);
+			});
+		});
+
+		// Function to set the quality indicator
+		function setQuality(content2, quality) {
+			const stars2 = content2.querySelectorAll('.quality-star');
+			stars2.forEach((star, index) => {
+				star.style.color = (index < quality) ? '#4caf50' : '#ccc'; // Green for filled, grey for unfilled
+			});
+		}
+	});
 })(jQuery);
