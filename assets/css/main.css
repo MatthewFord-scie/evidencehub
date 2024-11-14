@@ -3142,7 +3142,13 @@ ul.inclusion-list li {
 		color: #212931;
 	}
 
-	table thead {
+/* Table */
+table td:first-child, table th:first-child {
+	width: 25%; /* Adjust this value as needed */
+}
+
+
+table thead {
 		border-bottom-color: #eeeeee;
 	}
 
