@@ -428,4 +428,33 @@
 			});
 		}
 	});
+
+	// TESTING PIE CHART
+	// Reference to the canvas element for this specific pie chart
+	const uniquePieChartContext = document.getElementById('uniquePieChartCanvas').getContext('2d');
+
+	// Initialise the pie chart with unique variable names
+	const uniquePieChart = new Chart(uniquePieChartContext, {
+		type: 'pie',
+		data: {
+			labels: ['Red', 'Blue', 'Yellow', 'Green'],
+			datasets: [{
+				label: 'Unique Data Set',
+				data: [10, 20, 30, 40],
+				backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
+			}]
+		},
+		options: {
+			responsive: false,
+			plugins: {
+				legend: {
+					position: 'top'
+				},
+				tooltip: {
+					enabled: true
+				}
+			}
+		}
+	});
+// 	CLOSE TESTING
 })(jQuery);
