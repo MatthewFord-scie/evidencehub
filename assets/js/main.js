@@ -380,14 +380,21 @@
 // 	SEARCH FEATURE
 	document.addEventListener('DOMContentLoaded', function () {
 		const searchInput = document.getElementById('searchInput');
-		const infoModules = document.querySelectorAll('.info-module');
+		const infoModules = document.querySelectorAll('.info-module, .info-module2'); // Select both info-module and info-module2
 
 		// Function to filter info modules based on search input
 		searchInput.addEventListener('keyup', function () {
-			const query = searchInput.value.toLowerCase(); // Get the current input value
+			const query = searchInput.value.toLowerCase().trim(); // Get and trim the current input value
 			infoModules.forEach(module => {
-				const title = module.querySelector('.info-toggle').innerText.toLowerCase(); // Get the title text
-				if (title.includes(query)) { // Check if the title includes the query
+				// Get both info-toggle and info-toggle2 elements
+				const titleElement1 = module.querySelector('.info-toggle');
+				const titleElement2 = module.querySelector('.info-toggle2');
+
+				// Check if either title element exists and contains the query
+				const title1 = titleElement1 ? titleElement1.innerText.toLowerCase().trim() : '';
+				const title2 = titleElement2 ? titleElement2.innerText.toLowerCase().trim() : '';
+
+				if (title1.includes(query) || title2.includes(query)) {
 					module.style.display = ''; // Show module
 				} else {
 					module.style.display = 'none'; // Hide module
@@ -395,6 +402,8 @@
 			});
 		});
 	});
+
+
 
 
 	// 	Evidence collapsible 2 --------------------------------
