@@ -306,44 +306,48 @@
 
 	var yValuesEthPercentage = [0.5, 0.2, 3.1, 2.7, 1.1, 2.5, 1.0, 0.5, 0.9, 0.4, 0.8, 0.8, 74.4, 0.9, 0.1, 6.2]; // Overall ethnic percentage (%)
 
-	new Chart("ethnicChart", {
-		type: "bar",
-		data: {
-			labels: xEthnicityValues,
-			datasets: [{
-				label: 'Adults Receiving Long-Term Support (%)',
-				data: yValuesEthSupport,
-				backgroundColor: 'rgba(75, 192, 192, 0.6)',
-			}, {
-				label: 'Ethnic Percentage of England (%)',
-				data: yValuesEthPercentage,
-				backgroundColor: 'rgba(255, 99, 132, 0.6)',
-			}]
-		},
-		options: {
-			scales: {
-				y: {
-					beginAtZero: true,
-					title: {
-						display: true,
-						text: 'Percentage (%)'
+	const ethnicChartCanvas = document.getElementById("ethnicChart");
+	if (ethnicChartCanvas) {
+		new Chart(ethnicChartCanvas, {
+			type: "bar",
+			data: {
+				labels: xEthnicityValues,
+				datasets: [{
+					label: 'Adults Receiving Long-Term Support (%)',
+					data: yValuesEthSupport,
+					backgroundColor: 'rgba(75, 192, 192, 0.6)',
+				}, {
+					label: 'Ethnic Percentage of England (%)',
+					data: yValuesEthPercentage,
+					backgroundColor: 'rgba(255, 99, 132, 0.6)',
+				}]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+						title: {
+							display: true,
+							text: 'Percentage (%)'
+						}
+					},
+					x: {
+						title: {
+							display: true,
+							text: 'Ethnic Groups'
+						}
 					}
 				},
-				x: {
-					title: {
+				plugins: {
+					legend: {
 						display: true,
-						text: 'Ethnic Groups'
+						position: 'top',
 					}
 				}
-			},
-			plugins: {
-				legend: {
-					display: true,
-					position: 'top',
-				}
 			}
-		}
-	});
+		});
+	}
+
 
 // 	Evidence collapsible
 // JavaScript to handle the collapsible functionality for info module
@@ -437,6 +441,39 @@
 			});
 		}
 	});
+
+	// 	Evidence collapsible 3 --------------------------------
+// JavaScript to handle the collapsible functionality for info module
+	document.addEventListener('DOMContentLoaded', function() {
+		const toggleButtons3 = document.querySelectorAll('.info-toggle3');
+
+		toggleButtons3.forEach(button => {
+			button.addEventListener('click', function() {
+				this.classList.toggle('active');
+				const content3 = this.nextElementSibling;
+
+				// Toggle the display of the content
+				if (content3.style.display === 'block') {
+					content3.style.display = 'none';
+				} else {
+					content3.style.display = 'block';
+				}
+
+				// Set quality based on the data attribute
+				const quality = parseInt(this.getAttribute('data-quality'));
+				setQuality(content3, quality);
+			});
+		});
+
+		// Function to set the quality indicator
+		function setQuality(content3, quality) {
+			const stars3 = content3.querySelectorAll('.quality-star');
+			stars3.forEach((star, index) => {
+				star.style.color = (index < quality) ? '#4caf50' : '#ccc'; // Green for filled, grey for unfilled
+			});
+		}
+	});
+
 
 	// TESTING PIE CHART
 	// Reference to the canvas element for this specific pie chart
