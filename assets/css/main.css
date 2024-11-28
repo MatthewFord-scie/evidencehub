@@ -5307,5 +5307,57 @@ header {
 	opacity: 0.9;
 }
 
+/*Further anaylsis*/
+.further-analysis {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 20px;
+	flex-wrap: wrap;
+}
 
+.analysis-item {
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	width: calc(33.333% - 20px); /* 3 boxes across, with spacing */
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column; /* Stack items vertically */
+	padding: 15px;
+	text-align: center;
+	line-height: 1.5; /* Line height for better readability */
+}
+
+.analysis-image {
+	width: 100%; /* Ensure the image fills the box */
+	height: auto;
+	border-radius: 4px;
+	margin-bottom: 15px; /* Add space below the image */
+}
+
+.analysis-summary {
+	flex-grow: 1; /* Allow the summary to take up remaining space */
+	padding: 10px;
+	margin-bottom: 15px; /* Add space below the summary */
+	font-size: 16px;
+	word-spacing: 0.05em; /* Adjust word spacing for better readability */
+}
+
+.analysis-button {
+	display: block;
+	background-color: #007BFF;
+	color: white;
+	padding: 12px;
+	text-align: center;
+	border-radius: 4px;
+	text-decoration: none;
+	margin-top: auto; /* Push the button to the bottom of the box */
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.analysis-button:hover {
+	background-color: #0056b3;
+}
 
