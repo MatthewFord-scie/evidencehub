@@ -5326,7 +5326,7 @@ header {
 	display: flex;
 	flex-direction: column; /* Stack items vertically */
 	padding: 15px;
-	text-align: center;
+	text-align: left;
 	line-height: 1.5; /* Line height for better readability */
 }
 
@@ -5343,6 +5343,7 @@ header {
 	margin-bottom: 15px; /* Add space below the summary */
 	font-size: 16px;
 	word-spacing: 0.05em; /* Adjust word spacing for better readability */
+	text-align: left;
 }
 
 .analysis-button {
