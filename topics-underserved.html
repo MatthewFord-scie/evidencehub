@@ -70,6 +70,18 @@
 			<div class="search-container">
 				<input type="text" id="searchInput" placeholder="Search for evidence..." />
 			</div>
+
+			<select id="tagInput">
+				<option value="">-- Select a tag --</option>
+				<option value="distrust">Experience of Distrust</option>
+				<option value="stigma">Experience of stigma and misconceptions</option>
+				<option value="communication barriers">Communication barriers</option>
+				<option value="cultural competency">Cultural competency</option>
+				<option value="out-of-hours care">Out-of-hours care</option>
+				<option value="sensitivity">Sensitivity</option>
+				<option value="personal safety">Personal safety</option>
+			</select>
+
 			<div class="info-module">
 				<button class="info-toggle" data-quality="2">LGBTQ+ Individuals</button>
 				<div class="info-content">
@@ -95,8 +107,8 @@
 				</div>
 			</div>
 
-			<div class="info-module">
-				<button class="info-toggle" data-quality="3">Barriers for Roma, Gypsy and Traveller individuals</button>
+			<div class="info-module" data-tags="distrust,trust,experience">
+				<button class="info-toggle" data-quality="3" >Barriers for Roma, Gypsy and Traveller individuals</button>
 				<div class="info-content">
 					<div class="reference-quality">
 						<div class="reference">
@@ -126,7 +138,7 @@
 
 			</div>
 
-			<div class="info-module2">
+			<div class="info-module2" data-tags="stigma">
 				<button class="info-toggle2" data-quality="3">Barriers for individuals experiencing homelessness</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -519,7 +531,7 @@
 					<p>This review highlights ongoing gaps in social care for individuals transitioning from prison to community life, particularly in relation to post-release care. Despite some promising initiatives, there is a clear need for structured, evidence-based approaches to improve outcomes for this vulnerable group. Policymakers and researchers must shift focus to refining and evaluating these interventions to address the unique challenges faced by individuals leaving prison effectively.</p>
 				</div>
 			</div>
-			<div class="info-module2">
+			<div class="info-module2" data-tags="stigma,sensitivity,distrust,personal safety">
 				<button class="info-toggle2" data-quality="2">Individuals experiencing homelessness (During COVID-19)</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -548,7 +560,7 @@
 					<p>The report provides a comprehensive overview of the impact of COVID-19 on homelessness services, revealing both strengths and gaps. It advocates for more innovative solutions and stresses the importance of holistic care, integrating housing and healthcare more effectively. While the increased use of digital health tools is beneficial, it risks excluding already marginalised individuals, making more equitable solutions necessary.</p>
 				</div>
 			</div>
-			<div class="info-module2">
+			<div class="info-module2" data-tags="stigma,sensitivity">
 				<button class="info-toggle2" data-quality="3">Individuals experiencing homelessness (Access)</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -581,7 +593,7 @@
 					<p>This research highlights the importance of integrating health and social services with community organisations that the homeless population trusts. Additionally, it calls attention to the need for systemic changes that make health services more accessible and relevant to those living in vulnerable situations.</p>
 				</div>
 			</div>
-			<div class="info-module2">
+			<div class="info-module2" data-tags="stigma,sensitivity,distrust,personal safety">
 				<button class="info-toggle2" data-quality="3">Individuals experiencing homelessness (Experiences)</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -677,7 +689,7 @@
 					<p>The study’s limitations, including its reliance on primary care records to identify carers and absence of longitudinal analysis, indicate areas for further research. Future studies should explore diverse carer groups and the interplay between informal and formal care to develop optimised, equitable care solutions.</p>
 				</div>
 			</div>
-			<div class="info-module2">
+			<div class="info-module2" data-tags="cultural competency,stigma,sensitivity,communication barriers">
 				<button class="info-toggle2" data-quality="3">Black, Asian, and Minority Ethnic Carers</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -709,7 +721,7 @@
 				</div>
 
 			</div>
-			<div class="info-module2">
+			<div class="info-module2" data-tags="out-of-hours care">
 				<button class="info-toggle2" data-quality="3">Out-of-Hours Care</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -742,7 +754,7 @@
 					<p>By addressing these gaps, the report argues, the quality of life for patients and carers will significantly improve, with a fairer distribution of healthcare resources. The recommendations provide a clear pathway to achieve this, calling for urgent policy changes to prioritise out-of-hours care in national healthcare planning.</p>
 				</div>
 			</div>
-			<div class="info-module2">
+			<div class="info-module2" data-tags="out-of-hours care">
 				<button class="info-toggle2" data-quality="2">Informal Carers vs formal care</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -773,7 +785,7 @@
 					<p>This study calls for a nuanced approach to informal and formal care integration, ensuring equitable access to healthcare services regardless of an individual’s carer status.</p>
 				</div>
 			</div>
-			<div class="info-module2">
+			<div class="info-module2" data-tags="communication barriers,cultural competency">
 				<button class="info-toggle2" data-quality="3">Minority Language Users</button>
 				<div class="info-content2">
 					<div class="reference-quality2">
@@ -853,17 +865,19 @@
 				</div>
 
 				<div class="analysis-item">
-					<img src="images/underserved-image1.jpg" alt="Analysis 2 Image" class="analysis-image">
+					<img src="images/underserved-image2.jpg" alt="Analysis 2 Image" class="analysis-image">
 					<div class="analysis-summary">
-						<p>Summary of the second analysis goes here. Keep it concise.</p>
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
 					</div>
 					<a href="link-to-analysis2.html" class="analysis-button">Read More</a>
 				</div>
 
 				<div class="analysis-item">
-					<img src="images/underserved-image1.jpg" alt="Analysis 3 Image" class="analysis-image">
+					<img src="images/underserved-image3.jpg" alt="Analysis 3 Image" class="analysis-image">
 					<div class="analysis-summary">
-						<p>Summary of the third analysis goes here. Keep it concise.</p>
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
 					</div>
 					<a href="link-to-analysis3.html" class="analysis-button">Read More</a>
 				</div>

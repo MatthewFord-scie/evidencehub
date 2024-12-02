@@ -382,30 +382,69 @@
 	});
 
 // 	SEARCH FEATURE
+// 	document.addEventListener('DOMContentLoaded', function () {
+// 		const searchInput = document.getElementById('searchInput');
+// 		const infoModules = document.querySelectorAll('.info-module, .info-module2, .info-module3'); // Select both info-module and info-module2
+//
+// 		// Function to filter info modules based on search input
+// 		searchInput.addEventListener('keyup', function () {
+// 			const query = searchInput.value.toLowerCase().trim(); // Get and trim the current input value
+// 			infoModules.forEach(module => {
+// 				// Get both info-toggle and info-toggle2 elements
+// 				const titleElement1 = module.querySelector('.info-toggle');
+// 				const titleElement2 = module.querySelector('.info-toggle2');
+// 				const titleElement3 = module.querySelector('.info-toggle3');
+//
+// 				// Check if either title element exists and contains the query
+// 				const title1 = titleElement1 ? titleElement1.innerText.toLowerCase().trim() : '';
+// 				const title2 = titleElement2 ? titleElement2.innerText.toLowerCase().trim() : '';
+// 				const title3 = titleElement3 ? titleElement3.innerText.toLowerCase().trim() : '';
+//
+// 				if (title1.includes(query) || title2.includes(query) || title3.includes(query)) {
+// 					module.style.display = ''; // Show module
+// 				} else {
+// 					module.style.display = 'none'; // Hide module
+// 				}
+// 			});
+// 		});
+// 	});
+
 	document.addEventListener('DOMContentLoaded', function () {
 		const searchInput = document.getElementById('searchInput');
-		const infoModules = document.querySelectorAll('.info-module, .info-module2'); // Select both info-module and info-module2
+		const tagInput = document.getElementById('tagInput'); // Add an input for selecting tags
+		const infoModules = document.querySelectorAll('.info-module, .info-module2, .info-module3'); // Select both info-module and info-module2
 
-		// Function to filter info modules based on search input
-		searchInput.addEventListener('keyup', function () {
+		// Function to filter info modules based on search input and selected tags
+		searchInput.addEventListener('keyup', filterModules);
+		tagInput.addEventListener('change', filterModules);
+
+		function filterModules() {
 			const query = searchInput.value.toLowerCase().trim(); // Get and trim the current input value
+			const selectedTag = tagInput.value.toLowerCase().trim(); // Get selected tag (if any)
+
 			infoModules.forEach(module => {
-				// Get both info-toggle and info-toggle2 elements
 				const titleElement1 = module.querySelector('.info-toggle');
 				const titleElement2 = module.querySelector('.info-toggle2');
+				const titleElement3 = module.querySelector('.info-toggle3');
 
-				// Check if either title element exists and contains the query
 				const title1 = titleElement1 ? titleElement1.innerText.toLowerCase().trim() : '';
 				const title2 = titleElement2 ? titleElement2.innerText.toLowerCase().trim() : '';
+				const title3 = titleElement3 ? titleElement3.innerText.toLowerCase().trim() : '';
+				const tags = module.getAttribute('data-tags') ? module.getAttribute('data-tags').toLowerCase().split(',') : [];
 
-				if (title1.includes(query) || title2.includes(query)) {
+				// Check if the module matches the search query and the selected tag (if any)
+				const matchesSearch = title1.includes(query) || title2.includes(query) || title3.includes(query);
+				const matchesTag = !selectedTag || tags.includes(selectedTag);
+
+				if (matchesSearch && matchesTag) {
 					module.style.display = ''; // Show module
 				} else {
 					module.style.display = 'none'; // Hide module
 				}
 			});
-		});
+		}
 	});
+
 
 
 
