@@ -544,6 +544,62 @@
 // 	CLOSE TESTING
 
 // 	Further analysis
+	document.addEventListener('DOMContentLoaded', function () {
+		const canvas = document.getElementById('homelessness-chart1');
+		if (canvas) {
+			const ctx = canvas.getContext('2d');
+			const homelessnessChart1 = new Chart(ctx, {
+				type: 'doughnut',
+				data: {
+					labels: [
+						'Not at all confident (25.77%)',
+						'Not very confident (23.71%)',
+						'Neutral (20.62%)',
+						'Fairly confident (14.49%)',
+						'Very confident (13.40%)'
+					],
+					datasets: [{
+						data: [25.77, 23.71, 20.62, 14.49, 13.40],
+						backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#ffb3e6'],
+						hoverBackgroundColor: ['#ff4d4d', '#3385ff', '#66ff66', '#ff9966', '#ff66cc'],
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false, // Allow resizing for layout
+					plugins: {
+						legend: {
+							position: 'right', // Move legend to the right
+							align: 'center', // Center items vertically in legend box
+							labels: {
+								boxWidth: 15, // Smaller size for legend indicators
+								padding: 10, // Add spacing between legend items
+							}
+						},
+						tooltip: {
+							callbacks: {
+								label: function (tooltipItem) {
+									return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%';
+								}
+							}
+						}
+					},
+					layout: {
+						padding: {
+							left: 0,
+							right: 20, // Add space between chart and legend
+							top: 0,
+							bottom: 0
+						}
+					}
+				}
+			});
+		}
+	});
+
+
+
+
 
 
 })(jQuery);

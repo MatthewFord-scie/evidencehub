@@ -5505,3 +5505,10 @@ header {
 		margin-bottom: 10px;
 	}
 }
+
+#homelessness-chart1 {
+	max-width: 300px; /* Width reduced to approximately 30% */
+	max-height: 300px; /* Height proportionally reduced */
+	display: block;
+	margin: auto; /* Centre-align the chart */
+}
