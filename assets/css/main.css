@@ -5566,6 +5566,42 @@ header {
 	fill: #a829e8; /* Color on hover for visual feedback */
 }
 
+.region-beds {
+	fill: #cccccc; /* Default color for the regions */
+	transition: fill 0.3s ease;
+}
+
+.region-beds:hover {
+	fill: #e82929; /* Color on hover for visual feedback */
+}
+
+.region-beds2 {
+	fill: #cccccc; /* Default color for the regions */
+	transition: fill 0.3s ease;
+}
+
+.region-beds2:hover {
+	fill: #f16d6d; /* Color on hover for visual feedback */
+}
+
+.region-beds3 {
+	fill: #cccccc; /* Default color for the regions */
+	transition: fill 0.3s ease;
+}
+
+.region-beds3:hover {
+	fill: #57f19f; /* Color on hover for visual feedback */
+}
+
+.region-nodata {
+	fill: #cccccc; /* Default color for the regions */
+	transition: fill 0.3s ease;
+}
+
+.region-nodata:hover {
+	fill: #000000; /* Color on hover for visual feedback */
+}
+
 svg {
 	width: 100%;  /* Fill the width of the container */
 	height: auto; /* Maintain aspect ratio */

@@ -600,7 +600,7 @@
 // MAP JS
 // scripts.js
 	// scripts.js
-	const regions = document.querySelectorAll('.region, .region2, .region3');
+	const regions = document.querySelectorAll('.region, .region2, .region3, .region-beds, .region-beds2, .region-beds3, .region-nodata');
 	const tooltip = document.getElementById('tooltip');
 
 // Add event listeners to show tooltip on hover
