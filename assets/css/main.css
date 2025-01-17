@@ -5512,3 +5512,62 @@ header {
 	display: block;
 	margin: auto; /* Centre-align the chart */
 }
+
+/*MAP START*/
+/* Text Labels */
+
+.labels {
+	fill: #fff;
+	font-family: Arial;
+	font-size: 6px;
+	line-height: 12px;
+	font-weight: normal;
+	z-index: 1;
+	display: block;
+}
+
+/* styles.css */
+#tooltip {
+	position: absolute;
+	display: none;
+	padding: 8px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	pointer-events: none;
+	z-index: 100;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: adds shadow to the tooltip */
+}
+
+.region {
+	fill: #cccccc; /* Default color for the regions */
+	transition: fill 0.3s ease;
+}
+
+.region:hover {
+	fill: #ff0832; /* Color on hover for visual feedback */
+}
+
+.region2 {
+	fill: #cccccc; /* Default color for the regions */
+	transition: fill 0.3s ease;
+}
+
+.region2:hover {
+	fill: #e329c4; /* Color on hover for visual feedback */
+}
+
+.region3 {
+	fill: #cccccc; /* Default color for the regions */
+	transition: fill 0.3s ease;
+}
+
+.region3:hover {
+	fill: #a829e8; /* Color on hover for visual feedback */
+}
+
+svg {
+	width: 100%;  /* Fill the width of the container */
+	height: auto; /* Maintain aspect ratio */
+}
+/*MAP END*/

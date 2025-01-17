@@ -597,6 +597,36 @@
 		}
 	});
 
+// MAP JS
+// scripts.js
+	// scripts.js
+	const regions = document.querySelectorAll('.region, .region2, .region3');
+	const tooltip = document.getElementById('tooltip');
+
+// Add event listeners to show tooltip on hover
+	regions.forEach(region => {
+		region.addEventListener('mouseover', (event) => {
+			const info = region.getAttribute('data-info');
+			tooltip.style.display = 'block';
+			tooltip.innerHTML = info || 'No additional information available';
+		});
+
+		region.addEventListener('mousemove', (event) => {
+			// Update tooltip position based on the mouse's position
+			tooltip.style.left = `${event.pageX + 5}px`; // Offset to avoid overlapping
+			tooltip.style.top = `${event.pageY + 5}px`;
+		});
+
+		region.addEventListener('mouseout', () => {
+			tooltip.style.display = 'none';
+		});
+	});
+
+
+
+// 	MAP END
+
+
 
 
 
