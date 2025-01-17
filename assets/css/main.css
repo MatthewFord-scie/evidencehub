@@ -5518,16 +5518,14 @@ header {
 
 .labels {
 	fill: #fff;
-	font-family: Arial;
 	font-size: 6px;
 	line-height: 12px;
 	font-weight: normal;
-	z-index: 1;
 	display: block;
 }
 
 /* styles.css */
-#tooltip {
+#tooltip2 {
 	position: absolute;
 	display: none;
 	padding: 8px;

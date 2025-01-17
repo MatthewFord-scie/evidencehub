@@ -601,24 +601,24 @@
 // scripts.js
 	// scripts.js
 	const regions = document.querySelectorAll('.region, .region2, .region3, .region-beds, .region-beds2, .region-beds3, .region-nodata');
-	const tooltip = document.getElementById('tooltip');
+	const tooltip2 = document.getElementById('tooltip2');
 
 // Add event listeners to show tooltip on hover
 	regions.forEach(region => {
 		region.addEventListener('mouseover', (event) => {
 			const info = region.getAttribute('data-info');
-			tooltip.style.display = 'block';
-			tooltip.innerHTML = info || 'No additional information available';
+			tooltip2.style.display = 'block';
+			tooltip2.innerHTML = info || 'No additional information available';
 		});
 
 		region.addEventListener('mousemove', (event) => {
 			// Update tooltip position based on the mouse's position
-			tooltip.style.left = `${event.pageX + 5}px`; // Offset to avoid overlapping
-			tooltip.style.top = `${event.pageY + 5}px`;
+			tooltip2.style.left = `${event.pageX + 5}px`; // Offset to avoid overlapping
+			tooltip2.style.top = `${event.pageY + 5}px`;
 		});
 
 		region.addEventListener('mouseout', () => {
-			tooltip.style.display = 'none';
+			tooltip2.style.display = 'none';
 		});
 	});
 
