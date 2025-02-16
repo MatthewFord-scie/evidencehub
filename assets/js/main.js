@@ -434,7 +434,7 @@
 
 				// Check if the module matches the search query and the selected tag (if any)
 				const matchesSearch = title1.includes(query) || title2.includes(query) || title3.includes(query);
-				const matchesTag = !selectedTag || tags.includes(selectedTag);
+				const matchesTag = !selectedTag || tags.some(tag => tag.trim() === selectedTag);
 
 				if (matchesSearch && matchesTag) {
 					module.style.display = ''; // Show module
