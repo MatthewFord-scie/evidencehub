@@ -1,3 +1,5 @@
+console.log("✔ main.js has loaded successfully!");
+
 
 
 (function($) {
@@ -543,93 +545,93 @@
 	});
 // 	CLOSE TESTING
 
-// 	Further analysis
-	document.addEventListener('DOMContentLoaded', function () {
-		const canvas = document.getElementById('homelessness-chart1');
-		if (canvas) {
-			const ctx = canvas.getContext('2d');
-			const homelessnessChart1 = new Chart(ctx, {
-				type: 'doughnut',
-				data: {
-					labels: [
-						'Not at all confident (25.77%)',
-						'Not very confident (23.71%)',
-						'Neutral (20.62%)',
-						'Fairly confident (14.49%)',
-						'Very confident (13.40%)'
-					],
-					datasets: [{
-						data: [25.77, 23.71, 20.62, 14.49, 13.40],
-						backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#ffb3e6'],
-						hoverBackgroundColor: ['#ff4d4d', '#3385ff', '#66ff66', '#ff9966', '#ff66cc'],
-					}]
-				},
-				options: {
-					responsive: true,
-					maintainAspectRatio: false, // Allow resizing for layout
-					plugins: {
-						legend: {
-							position: 'right', // Move legend to the right
-							align: 'center', // Center items vertically in legend box
-							labels: {
-								boxWidth: 15, // Smaller size for legend indicators
-								padding: 10, // Add spacing between legend items
-							}
-						},
-						tooltip: {
-							callbacks: {
-								label: function (tooltipItem) {
-									return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%';
-								}
-							}
-						}
-					},
-					layout: {
-						padding: {
-							left: 0,
-							right: 20, // Add space between chart and legend
-							top: 0,
-							bottom: 0
-						}
-					}
-				}
-			});
-		}
-	});
 
 // MAP JS
-// scripts.js
-	// scripts.js
-	const regions = document.querySelectorAll('.region, .region2, .region3, .region-beds, .region-beds2, .region-beds3, .region-nodata');
-	const tooltip2 = document.getElementById('tooltip2');
+	document.addEventListener("DOMContentLoaded", function () {
+		const regions = document.querySelectorAll('.region, .region2, .region3, .region-beds, .region-beds2, .region-beds3, .region-nodata');
+		const regionInfo = document.getElementById('region-info');
 
-// Add event listeners to show tooltip on hover
-	regions.forEach(region => {
-		region.addEventListener('mouseover', (event) => {
-			const info = region.getAttribute('data-info');
-			tooltip2.style.display = 'block';
-			tooltip2.innerHTML = info || 'No additional information available';
-		});
+		if (!regionInfo) {
+			console.error("Error: #region-info div not found.");
+			return;
+		}
 
-		region.addEventListener('mousemove', (event) => {
-			// Update tooltip position based on the mouse's position
-			tooltip2.style.left = `${event.pageX + 5}px`; // Offset to avoid overlapping
-			tooltip2.style.top = `${event.pageY + 5}px`;
-		});
+		console.log("Script is running. Regions found:", regions.length);
 
-		region.addEventListener('mouseout', () => {
-			tooltip2.style.display = 'none';
+		regions.forEach(region => {
+			region.addEventListener('click', (event) => {
+				const regionName = region.getAttribute('data-name') || 'Unknown Region';
+				const detailedInfo = region.getAttribute('data-details') || 'No detailed information available.';
+
+				console.log(`Clicked on: ${regionName}`);
+
+				regionInfo.innerHTML = `<h3>${regionName}</h3><p>${detailedInfo}</p>`;
+				regionInfo.style.display = 'block';
+			});
 		});
 	});
+
 
 
 
 // 	MAP END
 
+// 	Further analysis
+	window.onload = function () {
+		const canvas = document.getElementById('homelessness-chart1');
 
+		if (!canvas) {
+			console.error("❌ Chart canvas 'homelessness-chart1' not found!");
+			return;
+		}
 
+		const ctx = canvas.getContext('2d');
 
-
-
-
+		const homelessnessChart1 = new Chart(ctx, {
+			type: 'doughnut',
+			data: {
+				labels: [
+					'Not at all confident (25.77%)',
+					'Not very confident (23.71%)',
+					'Neutral (20.62%)',
+					'Fairly confident (14.49%)',
+					'Very confident (13.40%)'
+				],
+				datasets: [{
+					data: [25.77, 23.71, 20.62, 14.49, 13.40],
+					backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#ffb3e6'],
+					hoverBackgroundColor: ['#ff4d4d', '#3385ff', '#66ff66', '#ff9966', '#ff66cc'],
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: {
+						position: 'right',
+						align: 'center',
+						labels: {
+							boxWidth: 15,
+							padding: 10,
+						}
+					},
+					tooltip: {
+						callbacks: {
+							label: function (tooltipItem) {
+								return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%';
+							}
+						}
+					}
+				},
+				layout: {
+					padding: {
+						left: 0,
+						right: 20,
+						top: 0,
+						bottom: 0
+					}
+				}
+			}
+		});
+	};
 })(jQuery);
