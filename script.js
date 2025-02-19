@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let ukMapInfoBoxUnique = document.getElementById("uk-map-info-box");
     let ukMapLegendUnique = document.getElementById("uk-map-legend");
 
+    if (!ukMapContainerUnique || !ukMapTooltipUnique || !ukMapInfoBoxUnique || !ukMapLegendUnique) {
+        console.error("Error: One or more required elements not found.");
+        return;
+    }
+
     let ukRegionDataUnique = {
         "England": { vacancyRate: 6.9, description: "In 2023/24 this figure stood at 8.1%, the vacancy rate percentage point change stands at -1.2%", link: "https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/Workforce-intelligence/publications/Topics/Monthly-tracking/Recruitment-and-retention.aspx" },
         "East of England": { vacancyRate: 7.7, description: "In 2023/24 this figure stood at 8.3%, the vacancy rate percentage point change stands at -0.6%", link: "https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/Workforce-intelligence/publications/Topics/Monthly-tracking/Recruitment-and-retention.aspx" },
@@ -26,15 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function getRegionColour(vacancyRate) {
         let percentage = (vacancyRate - minVacancyRate) / (maxVacancyRate - minVacancyRate);
-
-        // Adjusted gradient: From light blue (low vacancy) to deep purple (high vacancy)
-        let red = Math.round(230 - (percentage * 160));  // Keeps it slightly colourful
+        let red = Math.round(230 - (percentage * 160));
         let green = Math.round(230 - (percentage * 190));
-        let blue = Math.round(255 - (percentage * 80));  // Ensures low vacancy regions are still visible
-
+        let blue = Math.round(255 - (percentage * 80));
         return `rgb(${red}, ${green}, ${blue})`;
     }
-
 
     fetch("/images/united-kingdom.svg")
         .then(response => response.text())
@@ -47,25 +48,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     ukMapPathUnique.getAttribute("title") ||
                     "Unknown Region";
 
-                // ✅ Remove Ireland (Republic of Ireland) properly
-                if (ukRegionNameUnique.includes("Ireland") && !ukRegionNameUnique.includes("Northern")) {
-                    ukMapPathUnique.remove();
-                    return; // Skip processing
-                }
-
                 if (ukRegionDataUnique[ukRegionNameUnique]) {
                     let vacancyRate = ukRegionDataUnique[ukRegionNameUnique].vacancyRate;
                     let regionColour = getRegionColour(vacancyRate);
                     ukMapPathUnique.style.fill = regionColour;
-                    ukMapPathUnique.style.pointerEvents = "all"; // ✅ Ensure hover events work
+                    ukMapPathUnique.style.pointerEvents = "all";
                 }
 
-                // ✅ Hover event (Fix tooltip not showing)
                 ukMapPathUnique.addEventListener("mouseover", function (event) {
                     let region = ukRegionDataUnique[ukRegionNameUnique];
-                    ukMapTooltipUnique.innerHTML = `
-                        <strong>${ukRegionNameUnique}</strong><br>
-                        Vacancy Rate: ${region.vacancyRate}%`;
+                    if (!region) return;
+                    ukMapTooltipUnique.innerHTML = `<strong>${ukRegionNameUnique}</strong><br>Vacancy Rate: ${region.vacancyRate}%`;
                     ukMapTooltipUnique.style.display = "block";
                     ukMapTooltipUnique.style.left = event.pageX + 10 + "px";
                     ukMapTooltipUnique.style.top = event.pageY + 10 + "px";
@@ -76,43 +69,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 ukMapPathUnique.addEventListener("mousemove", function (event) {
                     let tooltipWidth = ukMapTooltipUnique.offsetWidth;
                     let tooltipHeight = ukMapTooltipUnique.offsetHeight;
-
-                    let tooltipX = event.pageX - (tooltipWidth / 2); // Center horizontally
-                    let tooltipY = event.pageY - tooltipHeight - 10; // Move tooltip above cursor
-
-                    // Ensure tooltip stays within the viewport
+                    let tooltipX = event.pageX - (tooltipWidth / 2);
+                    let tooltipY = event.pageY - tooltipHeight - 10;
                     if (tooltipX < 0) tooltipX = 10;
-                    if (tooltipY < 0) tooltipY = event.pageY + 20; // Fallback: move below cursor if too high
-
+                    if (tooltipY < 0) tooltipY = event.pageY + 20;
                     ukMapTooltipUnique.style.left = `${tooltipX}px`;
                     ukMapTooltipUnique.style.top = `${tooltipY}px`;
                 });
-
 
                 ukMapPathUnique.addEventListener("mouseout", function () {
                     ukMapTooltipUnique.style.display = "none";
                     this.style.stroke = "none";
                 });
 
-                // ✅ Click event for info box
                 ukMapPathUnique.addEventListener("click", function () {
                     let region = ukRegionDataUnique[ukRegionNameUnique];
-                    ukMapInfoBoxUnique.innerHTML = `
-                        <h2>${ukRegionNameUnique}</h2>
-                        <p><strong>Vacancy Rate:</strong> ${region.vacancyRate}%</p>
-                        <p>${region.description}</p>
-                    `;
+                    if (!region) return;
+                    ukMapInfoBoxUnique.innerHTML = `<h2>${ukRegionNameUnique}</h2><p><strong>Vacancy Rate:</strong> ${region.vacancyRate}%</p><p>${region.description}</p>`;
                 });
             });
-
-            // ✅ Fix: Rebuild the Legend
-            let legendHtml = '<h3>Vacancy Rate Scale</h3>';
-            for (let i = 0; i <= 10; i++) {
-                let vacancyRate = minVacancyRate + (i / 10) * (maxVacancyRate - minVacancyRate);
-                let color = getRegionColour(vacancyRate);
-                legendHtml += `<div style="background:${color}; width: 100%; padding: 5px;">${vacancyRate.toFixed(1)}%</div>`;
-            }
-            ukMapLegendUnique.innerHTML = legendHtml;
         })
         .catch(ukMapErrorUnique => console.error("Error loading UK SVG:", ukMapErrorUnique));
 });
