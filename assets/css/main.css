@@ -5359,7 +5359,7 @@ header {
 
 /* Button styling for group 3 */
 .info-toggle3 {
-	background-color: #FF5722; /* Blue background */
+	background-color: #f32121; /* Blue background */
 	color: white;              /* White text */
 	cursor: pointer;           /* Pointer cursor on hover */
 	padding: 15px;             /* Padding for the button */
@@ -5379,9 +5379,7 @@ header {
 
 /* Change button background color on hover */
 .info-toggle3:hover {
-	background-color: #ff0000; /* Blue color on hover */
-	color: #ffffff;              /* Change text color to white */
-	box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2); /* Optional shadow effect */
+	background-color: rgb(197, 27, 92); /* Darker blue on hover */
 }
 
 /* Content styling */
@@ -5673,5 +5671,71 @@ svg {
 	background: #f9f9f9;
 	display: none;
 }
+
+/*TESTING NEW BOXES*/
+.info-toggle3 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white; /* White background */
+	color: #333; /* Dark grey text */
+	cursor: pointer;
+	width: 100%;
+	border: 1px solid #ddd; /* Light grey border */
+	outline: none;
+	text-align: left;
+	font-size: 16px;
+	transition: background-color 0.3s;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.info-toggle3:hover {
+	background-color: #f5f5f5; /* Light grey hover */
+}
+
+.info-icon3 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #C8102E; /* Red background */
+	padding: 10px;
+	min-width: 60px;
+	border-radius: 5px 0 0 5px; /* Rounded left corners */
+}
+
+.info-icon3 img {
+	width: 40px; /* Adjust icon size */
+	height: auto;
+}
+
+.info-text3 {
+	flex-grow: 1;
+	padding: 5px 15px;
+}
+
+.info-text3 h3 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info-text3 p {
+	margin: 5px 0 0;
+	font-size: 14px;
+	color: #666;
+}
+
+.info-arrow3 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #C8102E; /* Red arrow */
+	font-size: 18px;
+	padding-right: 15px;
+}
+
+
+
 
 
