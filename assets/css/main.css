@@ -5692,13 +5692,14 @@ svg {
 
 .info-toggle3:hover {
 	background-color: #f5f5f5; /* Light grey hover */
+	outline: 3px solid #FF5722;
 }
 
 .info-icon3 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #C8102E; /* Red background */
+	background-color: #FF5722; /* Red background */
 	padding: 10px;
 	min-width: 60px;
 	border-radius: 5px 0 0 5px; /* Rounded left corners */
@@ -5724,13 +5725,14 @@ svg {
 	margin: 5px 0 0;
 	font-size: 14px;
 	color: #666;
+	font-family: "Merriweather", Georgia, serif;
 }
 
 .info-arrow3 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #C8102E; /* Red arrow */
+	color: #FF5722; /* Red arrow */
 	font-size: 30px;
 	padding-right: 15px;
 }
@@ -5786,6 +5788,7 @@ svg {
 .info-text2 p {
 	margin: 5px 0 0;
 	font-size: 14px;
+	font-family: "Merriweather", Georgia, serif;
 	color: #666;
 }
 
@@ -5818,6 +5821,7 @@ svg {
 
 .info-toggle:hover {
 	background-color: #f5f5f5; /* Light grey hover */
+	outline: 3px solid #4CAF50;
 }
 
 .info-icon {
@@ -5849,6 +5853,7 @@ svg {
 .info-text p {
 	margin: 5px 0 0;
 	font-size: 14px;
+	font-family: "Merriweather", Georgia, serif;
 	color: #666;
 }
 
