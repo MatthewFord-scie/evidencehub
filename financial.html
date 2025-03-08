@@ -10,6 +10,25 @@
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		/* Ensures the chart stays within a fixed size */
+		#fin-chart-container {
+			width: 80%;
+			max-width: 800px;
+			height: 400px;  /* FIXED HEIGHT to prevent infinite growth */
+			margin: auto;
+			position: relative;
+		}
+
+		/* Prevents unwanted infinite resizing */
+		canvas {
+			width: 100% !important;
+			height: 100% !important;
+			display: block;
+			resize: none;  /* Prevents the chart from growing infinitely */
+		}
+	</style>
 </head>
 <body class="is-preload">
 <!-- Wrapper -->
@@ -48,9 +67,9 @@
 			<div class="stats-section">
 				<h2>Key Statistics</h2>
 				<div class="stats-container">
-					<div class="stat-box">The sector faces workforce shortages of about <b>131,000</b> at any time,</div>
-					<div class="stat-box">Profit motivations are creating adverse pressures that are further destabilising and inequitably distributing already-strained care resources</div>
-					<div class="stat-box">Rural residents pay, on average, <b>21% (£104)</b> more per head in council tax than urban residents, yet receive <b>14%</b> less per head in social care support.</div>
+					<div class="stat-box">The means-tested nature of social care funding means that <b>individuals with limited financial resources may not qualify for support,</b> exacerbating existing financial inequities <br><a href="https://www.kingsfund.org.uk/insight-and-analysis/long-reads/social-care-360-access#1.-requests-for-support" target="_blank">The King's Fund (2025)</a></div>
+					<div class="stat-box"><b>Nearly half (47%) of all carers</b> report experiencing financial difficulties due to their caregiving responsibilities, suggesting inadequate financial support for carers <br><a href="https://sticerd.lse.ac.uk/dps/case/spdo/SPDO_Research_Brief03.pdf" target="_blank">LSE (2021)</a></div>
+					<div class="stat-box">Rural residents pay, on average, <b>21% (£104)</b> more per head in council tax than urban residents, yet receive <b>14%</b> less per head in social care support.<br><a href="https://rsnonline.org.uk/images/revitalising-rural/rural-fair-funding.pdf#:~:text=Assessment%20grant%20than%20their%20urban%20counterparts%20o,to%20a%20lack%20of%20Government%20Funding%2C%20rural" target="_blank">RSN (2022)</a></div>
 				</div>
 			</div>
 			<br>
@@ -549,18 +568,18 @@
 						The findings underscore the need for policy interventions aimed at reducing these inequalities, such as subsidising care costs and enhancing public awareness campaigns. Addressing these socioeconomic disparities is essential for ensuring equitable access to dementia care and improving health outcomes for all individuals, regardless of their economic status.</p>
 				</div>
 			</div>
-			<div class="info-module2" data-tags="Financial eligibility, Means testing, Social care funding, Inflation adjustment, England">
-				<button class="info-toggle2" data-quality="3">
-					<div class="info-icon2">
+			<div class="info-module" data-tags="Financial eligibility, Means testing, Social care funding, Inflation adjustment, England">
+				<button class="info-toggle" data-quality="3">
+					<div class="info-icon">
 						<img src="images/profit.png" alt="Financial eligibility in social care">
 					</div>
-					<div class="info-text2">
+					<div class="info-text">
 						<h3>Social care means test thresholds and inflation</h3>
 						<p>Analysis of whether England's social care means test thresholds have kept pace with inflation</p>
 					</div>
 					<div class="info-arrow2">&#10132;</div> <!-- Right arrow -->
 				</button>
-				<div class="info-content2">
+				<div class="info-content">
 					<div class="reference-quality">
 						<div class="reference">
 							<header>
@@ -568,14 +587,101 @@
 								<p><b><a href="https://www.kingsfund.org.uk/insight-and-analysis/long-reads/social-care-360-access#1.-requests-for-support" target="_blank">The King's Fund (2025).<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i></a></b> Social Care 360: Access.</p>
 							</header>
 						</div>
-						<div class="quality-indicator2">
+						<div class="quality-indicator">
 							<span class="quality-label">Quality:</span>
 							<span class="quality-star" data-quality="1">&#9733;</span>
 							<span class="quality-star" data-quality="2">&#9733;</span>
 							<span class="quality-star" data-quality="3">&#9733;</span>
 						</div>
 					</div>
+					<h3>Chart</h3>
+					<div id="fin-chart-container">
+						<canvas id="social-care-threshold-chart"></canvas>
+					</div>
 
+					<script>
+						document.addEventListener("DOMContentLoaded", function () {
+							console.log("✅ DOM fully loaded, running Chart.js...");
+
+							const canvas = document.getElementById('social-care-threshold-chart');
+
+							if (!canvas) {
+								console.error("❌ Chart canvas not found!");
+								return;
+							}
+
+							console.log("✅ Canvas found, initializing chart...");
+
+							const ctx = canvas.getContext('2d');
+
+							new Chart(ctx, {
+								type: 'line',
+								data: {
+									labels: [
+										'2010/11', '2011/12', '2012/13', '2013/14', '2014/15', '2015/16',
+										'2016/17', '2017/18', '2018/19', '2019/20', '2020/21', '2021/22', '2022/23'
+									],
+									datasets: [
+										{
+											label: 'Rise in line with inflation',
+											data: [23000, 23500, 24000, 24500, 25000, 25500, 26200, 27000, 27800, 29000, 29500, 30000, 31000],
+											borderColor: '#00AEEF',
+											backgroundColor: 'rgba(0, 174, 239, 0.2)',
+											fill: true,
+											pointRadius: 4,
+											pointBackgroundColor: '#00AEEF',
+											tension: 0.3
+										},
+										{
+											label: 'Actual',
+											data: [23000, 23000, 23000, 23000, 23000, 23000, 23000, 23000, 23000, 23000, 23000, 23000, 23000],
+											borderColor: '#001F3F',
+											backgroundColor: 'rgba(0, 31, 63, 0.8)',
+											fill: false,
+											pointRadius: 4,
+											pointBackgroundColor: '#001F3F',
+											tension: 0
+										}
+									]
+								},
+								options: {
+									responsive: true,
+									maintainAspectRatio: false,  /* Prevents infinite resizing issues */
+									scales: {
+										y: {
+											beginAtZero: false,
+											min: 20000,
+											max: 32000,
+											ticks: {
+												callback: function (value) {
+													return '£' + value.toLocaleString();
+												}
+											}
+										}
+									},
+									plugins: {
+										legend: {
+											position: 'top',
+											labels: {
+												boxWidth: 15,
+												padding: 10,
+												usePointStyle: true
+											}
+										},
+										tooltip: {
+											callbacks: {
+												label: function (tooltipItem) {
+													return tooltipItem.dataset.label + ': £' + tooltipItem.raw.toLocaleString();
+												}
+											}
+										}
+									}
+								}
+							});
+
+							console.log("✅ Chart initialized successfully!");
+						});
+					</script>
 					<h3>Key Messages</h3>
 					<ul>
 						<li>The number of new requests for social care support in England increased from 2.0 million in 2022/23 to 2.1 million in 2023/24.</li>
@@ -585,6 +691,7 @@
 
 					<h3>Commentary</h3>
 					<p>The increase in requests for social care support highlights growing demand within the sector. However, the report suggests that financial eligibility thresholds may not have been adjusted to reflect inflationary pressures. This stagnation could result in fewer individuals qualifying for publicly funded care, thereby increasing out-of-pocket expenses for those in need. Such a scenario may exacerbate existing inequities in access to social care services, particularly affecting low-income individuals who are unable to afford private care options. To promote equity, it is essential to regularly review and adjust financial eligibility criteria in line with economic changes, ensuring that access to necessary care services is based on need rather than financial capability.</p>
+					<p>For more information, visit <a href="https://www.kingsfund.org.uk/insight-and-analysis/long-reads/social-care-360-access#1.-requests-for-support" target="_blank">The King's Fund Social Care 360</a></p>
 				</div>
 			</div>
 
