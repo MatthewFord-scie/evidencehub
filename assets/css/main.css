@@ -1,5 +1,8 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700&display=swap');
+
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -147,7 +150,7 @@ input, select, textarea {
 	}
 
 	body, input, select, textarea {
-		font-family: "Merriweather", Georgia, serif;
+		font-family: 'Inter', sans-serif;
 		font-weight: 300;
 		font-size: 1rem;
 		line-height: 2.375;
@@ -180,7 +183,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: 'Urbanist', sans-serif;
 		font-weight: 900;
 		line-height: 1.5;
 		letter-spacing: 0.075em;
@@ -2096,7 +2099,7 @@ input, select, textarea {
 		align-items: center;           /* Centers text vertically */
 		justify-content: flex-start;    /* Aligns text to the left */
 		padding: 10px 20px;             /* Adjust padding as needed */
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: 'Inter', sans-serif;
 	}
 
 .button {
@@ -2112,7 +2115,7 @@ input, select, textarea {
 		border-radius: 0;
 		cursor: pointer;
 		display: inline-block;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: 'Inter', sans-serif;
 		font-size: 0.8rem;
 		font-weight: 900;
 		letter-spacing: 0.075em;
@@ -2347,7 +2350,7 @@ input, select, textarea {
 
 	label {
 		display: block;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: 'Inter', sans-serif;
 		font-weight: 900;
 		line-height: 1.5;
 		letter-spacing: 0.075em;
@@ -2441,7 +2444,7 @@ input, select, textarea {
 			display: inline-block;
 			font-size: 1rem;
 			letter-spacing: 0;
-			font-family: "Merriweather", Georgia, serif;
+			font-family: 'Inter', sans-serif;
 			text-transform: none;
 			font-weight: 300;
 			padding-left: 2.8rem;
@@ -2459,7 +2462,7 @@ input, select, textarea {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
+				font-family: 'Inter', sans-serif;
 				font-weight: 900;
 			}
 
@@ -2600,7 +2603,7 @@ input, select, textarea {
 			text-rendering: auto;
 			line-height: 1;
 			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
+			font-family: 'Inter', sans-serif;
 			font-weight: 400;
 		}
 
@@ -2617,7 +2620,7 @@ input, select, textarea {
 		}
 
 		.icon.brands:before {
-			font-family: 'Font Awesome 5 Brands';
+			font-family: 'Inter', sans-serif;
 		}
 
 /* Image */
@@ -3072,7 +3075,7 @@ ul.inclusion-list li {
 		}
 
 		table th {
-			font-family: "Source Sans Pro", Helvetica, sans-serif;
+			font-family: 'Inter', sans-serif;
 			font-size: 0.8rem;
 			font-weight: 900;
 			letter-spacing: 0.075em;
@@ -3178,7 +3181,7 @@ table thead {
 			transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
 			border: solid 2px;
 			display: inline-block;
-			font-family: "Source Sans Pro", Helvetica, sans-serif;
+			font-family: 'Inter', sans-serif;
 			font-size: 0.8rem;
 			font-weight: 900;
 			height: 3rem;
@@ -3206,7 +3209,7 @@ table thead {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
+				font-family: 'Inter', sans-serif;
 				font-weight: 900;
 			}
 
@@ -3288,8 +3291,8 @@ table thead {
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: #212931;
-			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg6.jpg");
+			background-color: #e6e6e6;
+			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg7.jpg");
 			background-size: auto,								auto,														100% auto;
 			background-position: center,								center,														top center;
 			background-repeat: repeat,								no-repeat,													no-repeat;
@@ -3621,7 +3624,7 @@ table thead {
 			border-style: solid;
 			border-color: #ffffff;
 			border-width: 0px !important;
-			font-family: "Source Sans Pro", Helvetica, sans-serif;
+			font-family: 'Inter', sans-serif;
 			font-size: 2.25rem;
 			font-weight: 900;
 			letter-spacing: 0.075em;
@@ -3746,7 +3749,7 @@ table thead {
 			-webkit-flex-shrink: 1;
 			-ms-flex-shrink: 1;
 			flex-shrink: 1;
-			font-family: "Source Sans Pro", Helvetica, sans-serif;
+			font-family: 'Inter', sans-serif;
 			font-weight: 900;
 			letter-spacing: 0.075em;
 			list-style: none;
@@ -4442,7 +4445,7 @@ table thead {
 		position: relative;
 		color: rgba(255, 255, 255, 0.25);
 		cursor: default;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: 'Inter', sans-serif;
 		font-size: 0.8rem;
 		font-weight: 900;
 		letter-spacing: 0.075em;
@@ -4552,7 +4555,7 @@ table thead {
 		right: 0.75rem;
 		border: 0;
 		color: #ffffff;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: 'Inter', sans-serif;
 		font-size: 0.9rem;
 		font-weight: 900;
 		letter-spacing: 0.075em;
@@ -4570,7 +4573,7 @@ table thead {
 			text-rendering: auto;
 			line-height: 1;
 			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
+			font-family: 'Inter', sans-serif;
 			font-weight: 900;
 		}
 
@@ -4644,7 +4647,7 @@ table thead {
 				#navPanel .links li a {
 					border-bottom: 0;
 					display: block;
-					font-family: "Source Sans Pro", Helvetica, sans-serif;
+					font-family: 'Inter', sans-serif;
 					font-size: 0.9rem;
 					font-size: 0.9rem;
 					font-weight: 900;
@@ -4688,7 +4691,7 @@ table thead {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
+				font-family: 'Inter', sans-serif;
 				font-weight: 900;
 			}
 
@@ -5725,7 +5728,7 @@ svg {
 	margin: 5px 0 0;
 	font-size: 14px;
 	color: #666;
-	font-family: "Merriweather", Georgia, serif;
+	font-family: 'Inter', sans-serif;
 }
 
 .info-arrow3 {
@@ -5788,7 +5791,7 @@ svg {
 .info-text2 p {
 	margin: 5px 0 0;
 	font-size: 14px;
-	font-family: "Merriweather", Georgia, serif;
+	font-family: 'Inter', sans-serif;
 	color: #666;
 }
 
@@ -5853,7 +5856,7 @@ svg {
 .info-text p {
 	margin: 5px 0 0;
 	font-size: 14px;
-	font-family: "Merriweather", Georgia, serif;
+	font-family: 'Inter', sans-serif;
 	color: #666;
 }
 
