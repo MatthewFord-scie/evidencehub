@@ -57,7 +57,7 @@
     <div id="main">
         <section class="post">
             <header class="major">
-                <h1>Stakeholder engagement</h1>
+                <h1>Stakeholder engagement.</h1>
                 <p>We appreciate your time in reviewing the Social Care Equity Evidence Hub.<br>
                     Your feedback will help us improve this resource to better support your work.</p>
             </header>
@@ -178,76 +178,99 @@
 <!-- Page logic: simple email submits via mailto, plus date validation for 1:1 fallback -->
 
 <!-- Apps Script submission (sends to Google Sheet) -->
+<!-- Apps Script submission (Google Sheet; no CORS preflight) -->
 <script>
     (function(){
-        // 👉 Replace DEPLOYMENT_ID and SHARED_SECRET_VALUE below
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbyAeKFWtUEHlNo8-LTTyUe2RIUpdqgzyWQe6V0S48POD2mK9LWn2cvkPESNjY8sfU_6/exec?token=matthew';
+        // Your live endpoint + shared secret
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbzNdksgJMzwcK3IwzwhYaet1cfV-abEfy75M5BCJKliLsIcl8xpS4dD7LA-RwImDTU/exec?token=matthew';
 
         function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
         function setMsg(el, txt, cls){ el.textContent = txt; el.className = 'small ' + (cls||''); }
+
+        // Use FormData to avoid preflight/CORS issues
         async function postInterest(payload){
-            const r = await fetch(GAS_URL, {
-                method:'POST',
-                headers:{'Content-Type':'application/json'},
-                body: JSON.stringify(payload)
-            });
-            if(!r.ok) throw new Error('network');
-            return r.json();
+            const fd = new FormData();
+            Object.entries(payload).forEach(([k,v]) => fd.append(k, v));
+            const res = await fetch(GAS_URL, { method: 'POST', body: fd }); // no headers
+            let data = null;
+            try { data = await res.json(); } catch(e) {}
+            if(!res.ok){
+                const msg = (data && data.message) ? data.message : `HTTP ${res.status}`;
+                throw new Error(msg);
+            }
+            return data || { status: 'ok' };
         }
 
-        // ===== Workshop form =====
+        // Grab forms and neutralise any legacy actions
         const wsForm = document.getElementById('workshopForm');
-        const wsEmail = document.getElementById('workshopEmail');
-        const wsMsg = document.getElementById('workshopMsg');
-        const wsHP = document.getElementById('workshopHP');
-        if(wsForm){
-            wsForm.onsubmit = async function(e){
+        const svForm = document.getElementById('surveyForm');
+        if (wsForm) wsForm.setAttribute('action', '#');
+        if (svForm) svForm.setAttribute('action', '#');
+
+        // ===== Workshop form =====
+        if (wsForm) {
+            const wsEmail = document.getElementById('workshopEmail');
+            const wsMsg   = document.getElementById('workshopMsg');
+            const wsHP    = document.getElementById('workshopHP'); // honeypot (hidden text input)
+
+            wsForm.addEventListener('submit', async function(e){
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                e.stopPropagation();
                 e.preventDefault();
-                const email = (wsEmail.value||'').trim();
-                if(wsHP && wsHP.value) return;
-                if(!isValidEmail(email)) return setMsg(wsMsg,'Please enter a valid email.','error');
-                setMsg(wsMsg,'Submitting…','muted');
-                try{
-                    const data = await postInterest({email, type:'workshop'});
-                    if(data && data.status==='ok'){
-                        setMsg(wsMsg,'Thanks! We’ll email you the Teams link shortly.','success');
+
+                const email = (wsEmail.value || '').trim();
+                if (wsHP && wsHP.value) return false; // bot/honeypot
+                if (!isValidEmail(email)) { setMsg(wsMsg, 'Please enter a valid email.', 'error'); return false; }
+
+                setMsg(wsMsg, 'Submitting…', 'muted');
+                try {
+                    const out = await postInterest({ email, type: 'workshop' });
+                    if (out && out.status === 'ok') {
+                        setMsg(wsMsg, 'Thanks! we’ll email you the Teams link shortly.', 'success');
                         wsForm.reset();
                     } else {
-                        setMsg(wsMsg,'Something went wrong. Please try again or email Matthew.Ford@scie.org.uk','error');
+                        setMsg(wsMsg, `Something went wrong: ${out && out.message ? out.message : 'unknown error'}`, 'error');
                     }
-                }catch{
-                    setMsg(wsMsg,'Network error. Please try again.','error');
+                } catch (err) {
+                    setMsg(wsMsg, `Network/server error: ${err.message || err}`, 'error');
                 }
-            };
+                return false;
+            }, true); // capture phase to beat older listeners
         }
 
         // ===== Survey form =====
-        const svForm = document.getElementById('surveyForm');
-        const svEmail = document.getElementById('surveyEmail');
-        const svMsg = document.getElementById('surveyMsg');
-        const svHP = document.getElementById('surveyHP');
-        if(svForm){
-            svForm.onsubmit = async function(e){
+        if (svForm) {
+            const svEmail = document.getElementById('surveyEmail');
+            const svMsg   = document.getElementById('surveyMsg');
+            const svHP    = document.getElementById('surveyHP'); // honeypot
+
+            svForm.addEventListener('submit', async function(e){
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                e.stopPropagation();
                 e.preventDefault();
-                const email = (svEmail.value||'').trim();
-                if(svHP && svHP.value) return;
-                if(!isValidEmail(email)) return setMsg(svMsg,'Please enter a valid email.','error');
-                setMsg(svMsg,'Submitting…','muted');
-                try{
-                    const data = await postInterest({email, type:'survey'});
-                    if(data && data.status==='ok'){
-                        setMsg(svMsg,'Got it! We’ll send the survey link when it opens.','success');
+
+                const email = (svEmail.value || '').trim();
+                if (svHP && svHP.value) return false;
+                if (!isValidEmail(email)) { setMsg(svMsg, 'Please enter a valid email.', 'error'); return false; }
+
+                setMsg(svMsg, 'Submitting…', 'muted');
+                try {
+                    const out = await postInterest({ email, type: 'survey' });
+                    if (out && out.status === 'ok') {
+                        setMsg(svMsg, 'Got it! we’ll send the survey link when it opens.', 'success');
                         svForm.reset();
                     } else {
-                        setMsg(svMsg,'Something went wrong. Please try again or email Matthew.Ford@scie.org.uk','error');
+                        setMsg(svMsg, `Something went wrong: ${out && out.message ? out.message : 'unknown error'}`, 'error');
                     }
-                }catch{
-                    setMsg(svMsg,'Network error. Please try again.','error');
+                } catch (err) {
+                    setMsg(svMsg, `Network/server error: ${err.message || err}`, 'error');
                 }
-            };
+                return false;
+            }, true);
         }
     })();
 </script>
+
 
 </body>
 </html>
