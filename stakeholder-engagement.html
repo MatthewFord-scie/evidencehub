@@ -33,6 +33,7 @@
         /* stack options vertically */
         .stack { display:block; }
         .stack > div { margin: 1.25rem 0; }
+
     </style>
 </head>
 <body class="is-preload">
@@ -100,27 +101,28 @@
                             <h3 class="inline">2. Request a 1:1 <span class="badge">20‑minute slots • Between 24th Nov – 5th Dec</span></h3>
                             <p>If you would like a short 1:1 to share feedback, book a slot below. This connects to our Outlook calendar via Microsoft Bookings.</p>
 
-                            <!-- Replace src with your live Microsoft Bookings page URL -->
-                            <div class="callout small muted" style="margin-bottom:.8rem;">
-                                Tip: i'll add this once set up in Outlook.
-                            </div>
+                            <button class="btn"
+                                    type="button"
+                                    onclick="window.open('https://outlook.office.com/bookwithme/user/a3c872655b8a4433a70143f03b067a0f@scie.org.uk/meetingtype/SVRwCe7HMUGxuT6WGxi68g2?anonymous&ismsaljsauthenabled&ep=mlink', '_blank');">
+                                Book a 1:1 with Tasnim
+                            </button>
 
-                            <details class="small">
-                                <summary>Or send a preferred time manually</summary>
-                                <form id="oneToOneForm" autocomplete="on" novalidate>
-                                    <div class="row">
-                                        <label for="oneToOneEmail">Email address</label>
-                                        <input id="oneToOneEmail" name="email" type="email" placeholder="name@example.org" required>
-                                    </div>
-                                    <div class="row">
-                                        <label for="oneToOneWhen">Choose a date & time (UK)</label>
-                                        <input id="oneToOneWhen" name="when" type="datetime-local" required step="1200">
-                                        <span class="small muted">Slots are 20 minutes. Window: 24 November – 5 December.</span>
-                                    </div>
-                                    <button class="btn" type="submit">Request this slot</button>
-                                    <span id="oneToOneMsg" aria-live="polite" class="small"></span>
-                                </form>
-                            </details>
+<!--                            <details class="small">-->
+<!--                                <summary>Or send a preferred time manually</summary>-->
+<!--                                <form id="oneToOneForm" autocomplete="on" novalidate>-->
+<!--                                    <div class="row">-->
+<!--                                        <label for="oneToOneEmail">Email address</label>-->
+<!--                                        <input id="oneToOneEmail" name="email" type="email" placeholder="name@example.org" required>-->
+<!--                                    </div>-->
+<!--                                    <div class="row">-->
+<!--                                        <label for="oneToOneWhen">Choose a date & time (UK)</label>-->
+<!--                                        <input id="oneToOneWhen" name="when" type="datetime-local" required step="1200">-->
+<!--                                        <span class="small muted">Slots are 20 minutes. Window: 24 November – 5 December.</span>-->
+<!--                                    </div>-->
+<!--                                    <button class="btn" type="submit">Request this slot</button>-->
+<!--                                    <span id="oneToOneMsg" aria-live="polite" class="small"></span>-->
+<!--                                </form>-->
+<!--                            </details>-->
                         </div>
                         <br>
                         <!-- Survey signup -->
