@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Stakeholder engagement survey – lived experience and unpaid carers</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+    <style>
+        /* Make range sliders visible */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            outline: none;
+            margin: 10px 0 5px 0;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #1a73e8;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            background: #1a73e8;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+        }
+
+        input[type=range]::-moz-range-track {
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+        }
+
+        /* Fix vertical alignment so slider thumb sits exactly in the middle */
+        input[type=range] {
+            vertical-align: middle;
+            padding: 0;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            margin-top: -8px;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            margin-top: -8px;
+        }
+
+        /* Completely hide the native checkbox for this form */
+        #stakeholder-survey-lived input[type=checkbox] {
+            position: absolute;
+            opacity: 0 !important;
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Position label so we can draw our box on it */
+        #stakeholder-survey-lived input[type=checkbox] + label {
+            position: relative;
+            padding-left: 2rem;
+            cursor: pointer;
+        }
+
+        /* Outer box */
+        #stakeholder-survey-lived input[type=checkbox] + label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 3px;
+            border: 2px solid #ccc;
+            background: #fff;
+        }
+
+        /* Checked state: blue fill */
+        #stakeholder-survey-lived input[type=checkbox]:checked + label::before {
+            background: #1a73e8;
+            border-color: #1a73e8;
+        }
+
+        /* White tick */
+        #stakeholder-survey-lived input[type=checkbox]:checked + label::after {
+            content: "";
+            position: absolute;
+            left: 0.38rem;
+            top: 0.22rem;
+            width: 0.35rem;
+            height: 0.7rem;
+            border: solid #fff;
+            border-width: 0 0.18rem 0.18rem 0;
+            transform: rotate(45deg);
+        }
+
+        /* Match survey text to Inter, normal weight, no capitalisation */
+        #stakeholder-survey-lived label,
+        #stakeholder-survey-lived .field label,
+        #stakeholder-survey-lived p,
+        #stakeholder-survey-lived textarea,
+        #stakeholder-survey-lived input[type=text],
+        #stakeholder-survey-lived input[type=email],
+        #stakeholder-survey-lived input[type=range] {
+            font-family: "Inter", sans-serif !important;
+            font-weight: 400 !important;
+            font-size: 1rem !important;
+            line-height: 1.5 !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            color: #000 !important;
+        }
+
+        .info-box {
+            background: #eef4ff;
+            border-left: 4px solid #1a73e8;
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+            font-family: "Inter", sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: #000;
+        }
+
+        /* Custom radios to match checkbox style (blue when selected) */
+        #stakeholder-survey-lived input[type=radio] {
+            position: absolute;
+            opacity: 0 !important;
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #stakeholder-survey-lived input[type=radio] + label {
+            position: relative;
+            padding-left: 2rem;
+            cursor: pointer;
+        }
+
+        /* Outer circle */
+        #stakeholder-survey-lived input[type=radio] + label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            background: #fff;
+        }
+
+        /* Filled blue with white dot when selected */
+        #stakeholder-survey-lived input[type=radio]:checked + label::before {
+            background: #1a73e8;
+            border-color: #1a73e8;
+        }
+
+        #stakeholder-survey-lived input[type=radio]:checked + label::after {
+            content: "";
+            position: absolute;
+            left: 0.4rem;
+            top: 0.35rem;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        /* More comfortable spacing for tip/info boxes */
+        .info-box,
+        .inline-info {
+            line-height: 1.6 !important;
+            padding: 1rem 1.25rem !important;
+            margin-top: 0.75rem !important;
+            margin-bottom: 1.25rem !important;
+            display: block;
+        }
+    </style>
+
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">
+            <img src="images/EquityHubLogo-White2.png" alt="Logo" style="width: 50%" />
+        </a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="index.html">About the Hub</a></li>
+            <li class="active"><a href="topicsmain.html">Our topics</a></li>
+            <li><a href="topicsmain.html">Chart of the week</a></li>
+            <li><a href="glossary.html">Glossary of terms</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        <section class="post">
+            <header class="major">
+                <h1>Engagement survey</h1>
+                <div class="box" style="background-color: #4A6789; border-radius: 10px; padding: 24px; color: white; line-height: 1.6; letter-spacing: 0.2px; text-align: left !important;">
+                    <h3 style="text-transform: none; margin-top: 0; font-weight: 700; color:#f0f0f0; letter-spacing: 0.5px; text-align: left !important;">
+                        Understanding how the Evidence Hub can support you
+                    </h3>
+                    <p style="letter-spacing: 0.5px; text-align: left !important; margin-bottom: 0.75rem;">
+                        Thank you for taking the time to provide feedback on SCIE's social care equity Evidence Hub.
+                        This survey is for people who draw on care and support and unpaid carers.
+                    </p>
+                    <p style="letter-spacing: 0.5px; text-align: left !important; margin-bottom: 0.75rem;">
+                        The questions in this survey were co-produced with the Evidence Hub’s advisory group.
+                        Your answers will help us understand how the Hub is used in practice, how clear and relevant it feels,
+                        and how it can better reflect real-life experiences of social care.
+                    </p>
+                    <p style="letter-spacing: 0.5px; text-align: left !important; margin-bottom: 0;">
+                        By completing this survey, you consent to your responses being held by the SCIE Research Team
+                        for approximately 12 months. We will not publish your name or contact details.
+                    </p>
+                </div>
+            </header>
+
+            <form method="POST" action="https://script.google.com/macros/s/AKfycbwQDWfTJukbMwwcCBkPSReOCbiHIF76cVqiuaIDaIi6OU35t9j1OsXuQssO6ThhUtKG1w/exec" id="stakeholder-survey-lived">
+                <!-- Section 1: About you -->
+                <h2>Section 1: About you</h2>
+                <div class="fields">
+                    <div class="field">
+                        <label><b>Question 1. </b>Which of the following best describes you?</label>
+                        <div class="info-box">
+                            This helps us understand whose experiences are reflected in the feedback we receive.
+                        </div>
+                        <div class="field half">
+                            <div>
+                                <input type="radio" id="lived_role_person" name="lived_role" value="Person who draws on care and support">
+                                <label for="lived_role_person">A person who draws on care and support</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="lived_role_carer" name="lived_role" value="Unpaid carer">
+                                <label for="lived_role_carer">An unpaid carer</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="lived_role_both" name="lived_role" value="Both">
+                                <label for="lived_role_both">Both</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="lived_role_prefer" name="lived_role" value="Prefer not to say">
+                                <label for="lived_role_prefer">Prefer not to say</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="use_hub_lived"><b>Question 2. </b>What will you or the person you care for use the Evidence Hub for?</label>
+                        <div class="info-box">
+                            For example, you may use the Hub to understand rights and entitlements, prepare for meetings or reviews,
+                            find information to support self-advocacy, or to learn about services and support.
+                        </div>
+                        <textarea name="use_hub_lived" id="use_hub_lived" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- Section 2: Hub content and navigation -->
+                <h2>Section 2: Hub content and navigation</h2>
+                <div class="fields">
+                    <!-- Slider 1: ease of finding evidence -->
+                    <div class="field">
+                        <label for="ease_find">
+                            <b>Question 3. </b>On a scale from 1 to 5, how easy is it to find relevant information within the Evidence Hub?<br>
+                            <span style="font-size: 0.9em; font-weight: normal;">
+                                1 = Difficult, 5 = Very easy
+                            </span>
+                        </label>
+                        <input
+                                type="range"
+                                id="ease_find"
+                                name="ease_find"
+                                min="1"
+                                max="5"
+                                step="1"
+                                value="3"
+                                oninput="document.getElementById('ease_find_value').textContent = this.value"
+                        />
+                        <p style="font-size: 0.9em; margin-top: 0.5em;">
+                            Current selection: <strong><span id="ease_find_value">3</span></strong>
+                        </p>
+                        <div class="info-box">
+                            Tip: move the circle along the line with your mouse or finger, or use the left and right arrow keys to choose a number.
+                        </div>
+                    </div>
+
+                    <!-- Slider 2: clarity of content -->
+                    <div class="field">
+                        <label for="clarity_content">
+                            <b>Question 4. </b>On a scale from 1 to 5, how clear is the information and language on the Evidence Hub?<br>
+                            <span style="font-size: 0.9em; font-weight: normal;">
+                                1 = not very clear, 5 = very clear
+                            </span>
+                        </label>
+                        <input
+                                type="range"
+                                id="clarity_content"
+                                name="clarity_content"
+                                min="1"
+                                max="5"
+                                step="1"
+                                value="3"
+                                oninput="document.getElementById('clarity_content_value').textContent = this.value"
+                        />
+                        <p style="font-size: 0.9em; margin-top: 0.5em;">
+                            Current selection: <strong><span id="clarity_content_value">3</span></strong>
+                        </p>
+                        <div class="info-box">
+                            Tip: move the circle along the line with your mouse or finger, or use the left and right arrow keys to choose a number.
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label><b>Question 5. </b>Which aspects of the Evidence Hub do you find most helpful? (select all that apply)</label>
+                        <div class="field half">
+                            <div>
+                                <input type="checkbox" id="aspect_key_messages" name="valuable_aspects" value="Key messages">
+                                <label for="aspect_key_messages">Key messages</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="aspect_statistics" name="valuable_aspects" value="Statistics">
+                                <label for="aspect_statistics">Statistics</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="aspect_commentary" name="valuable_aspects" value="Commentary">
+                                <label for="aspect_commentary">Commentary</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="aspect_appraisal" name="valuable_aspects" value="Critical appraisal of sources">
+                                <label for="aspect_appraisal">Critical appraisal of sources</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="aspect_references" name="valuable_aspects" value="References">
+                                <label for="aspect_references">References</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="aspect_searchability" name="valuable_aspects" value="Searchability">
+                                <label for="aspect_searchability">Searchability</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="aspect_visual_data" name="valuable_aspects" value="Visual data">
+                                <label for="aspect_visual_data">Visual data</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="aspect_other" name="valuable_aspects" value="Other">
+                                <label for="aspect_other">Other (please specify below)</label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="aspect_other_text" class="sr-only">Other aspect (optional)</label>
+                            <textarea name="aspect_other_text" id="aspect_other_text" rows="2" placeholder="If you selected 'Other', please describe."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- Section 3: Gaps, use and engagement -->
+                <h2>Section 3: Gaps, real-life experience and engagement</h2>
+                <div class="fields">
+                    <div class="field">
+                        <label for="gaps"><b>Question 6. </b>What feels like a gap or is missing in the Evidence Hub?</label>
+                        <textarea name="gaps" id="gaps" rows="3"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="themes_experiences"><b>Question 7. </b>How could the themes in the Evidence Hub better reflect real-life experiences of care and support?</label>
+                        <textarea name="themes_real_life" id="themes_experiences" rows="3"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label><b>Question 8. </b>How would you prefer to engage with the Evidence Hub in the future?</label>
+                        <div class="field half">
+                            <div>
+                                <input type="checkbox" id="engage_workshops" name="future_engagement" value="Workshops/webinars">
+                                <label for="engage_workshops">Workshops/webinars</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="engage_social" name="future_engagement" value="Social media">
+                                <label for="engage_social">Social media</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="engage_newsletters" name="future_engagement" value="Newsletters">
+                                <label for="engage_newsletters">Newsletters</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="engage_email" name="future_engagement" value="Email updates">
+                                <label for="engage_email">Email updates</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="anything_else"><b>Question 9. </b>Is there anything else you would like to share about your experience with the Evidence Hub?</label>
+                        <textarea name="anything_else" id="anything_else" rows="3"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label><b>Question 10. </b>Would you like to be contacted for a follow-up conversation for around 20 minutes?</label>
+                        <div class="field half">
+                            <div>
+                                <input type="radio" id="followup_yes" name="followup_consent" value="Yes">
+                                <label for="followup_yes">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="followup_no" name="followup_consent" value="No">
+                                <label for="followup_no">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field" id="followup_email_field" style="display: none;">
+                        <label for="followup_email">If yes, please enter your email address.</label>
+                        <input type="email" name="followup_email" id="followup_email" placeholder="name@example.com">
+                    </div>
+                </div>
+
+                <ul class="actions">
+                    <li><input type="submit" value="Submit survey" class="primary" /></li>
+                </ul>
+            </form>
+
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+    </footer>
+
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul>Images retrieved from The Centre for Ageing Better's Age-positive image library</ul>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- Simple behaviour: show email field only if follow-up = Yes -->
+<script>
+    (function() {
+        var yes = document.getElementById('followup_yes');
+        var no = document.getElementById('followup_no');
+        var emailField = document.getElementById('followup_email_field');
+
+        function toggleEmail() {
+            if (yes && yes.checked) {
+                emailField.style.display = 'block';
+            } else {
+                emailField.style.display = 'none';
+                var emailInput = document.getElementById('followup_email');
+                if (emailInput) {
+                    emailInput.value = '';
+                }
+            }
+        }
+
+        if (yes && no && emailField) {
+            yes.addEventListener('change', toggleEmail);
+            no.addEventListener('change', toggleEmail);
+        }
+    })();
+</script>
+
+</body>
+</html>
