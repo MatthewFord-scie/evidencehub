@@ -1,0 +1,712 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Financial</title>
+	<link rel="icon" type="image/x-icon" href="images/favicon.png">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		/* Ensures the chart stays within a fixed size */
+		#fin-chart-container {
+			width: 80%;
+			max-width: 800px;
+			height: 400px;  /* FIXED HEIGHT to prevent infinite growth */
+			margin: auto;
+			position: relative;
+		}
+
+		/* Prevents unwanted infinite resizing */
+		canvas {
+			width: 100% !important;
+			height: 100% !important;
+			display: block;
+			resize: none;  /* Prevents the chart from growing infinitely */
+		}
+	</style>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><img src="images/EquityHubLogo-White2.png" alt="Logo" style="width: 50%" /></a>
+	</header>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul class="links">
+			<li> <a href="index.html">About the Hub</a></li>
+			<li class="active"><a href="topicsmain.html">Our topics</a></li>
+			<li><a href="chartoftheweek.html">Chart of the week</a></li>
+			<li><a href="glossary.html">Glossary of terms</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main">
+		<!-- Post -->
+		<section class="post">
+			<header class="major">
+				<h1>Use of technology in care</h1>
+				<div class="box" style="background-color: #cc3810; border-radius: 10px; padding: 24px; color: white; line-height: 1.6; letter-spacing: 0.2px; text-align: left !important;">
+					<h3 style="text-transform: none; margin-top: 0; font-weight: 700; color:#f0f0f0; letter-spacing: 0.5px; text-align: left !important;">What is the ‘use of technology in care’?</h3>
+					<p style="letter-spacing: 0.5px; text-align: left !important;">
+						This theme looks at how digital tools, devices and systems are used across health and social care to support people who use services, carers and the workforce. It considers how technology shapes access, communication and the delivery of support. This includes everyday tools such as smartphones, online appointment systems and remote monitoring, as well as wider digital infrastructure like connectivity, assistive technologies and shared care records.
+						<br><br>
+						The theme also examines who benefits, who is excluded, and how these patterns reflect broader inequities. Digital literacy, affordability of devices and data, and the design of digital services all influence people’s ability to engage with care. For some, technology can improve access, independence and convenience. For others, it can create barriers, especially when digital-only routes replace face-to-face or telephone options.
+						<br><br>
+						Differences in local infrastructure, investment and digital skills across communities further shape the role technology plays in care. Workforce skills and confidence also affect how well digital tools are implemented and used in practice.
+						Overall, this theme highlights both the opportunities and risks associated with technology in care, and explores how digital approaches can be made accessible, safe and equitable for everyone.</p>
+				</div>
+			</header>
+			<!--								KEY-->
+<!--			<div class="key">-->
+<!--				<div class="key-item age-group">-->
+<!--					Groups by Demographic Factors-->
+<!--				</div>-->
+<!--				<div class="key-item socio-economic-group">-->
+<!--					Groups by Social and Economic Factors-->
+<!--				</div>-->
+<!--				<div class="key-item health-status-group">-->
+<!--					Groups by Health Status-->
+<!--				</div>-->
+<!--			</div>-->
+
+			<!--								KEY END-->
+
+			<br>
+			<div class="search-container">
+				<input type="text" id="searchInput" placeholder="Search for evidence..." />
+			</div>
+
+			<select id="tagInput">
+				<option value="">-- Select a tag --</option>
+				<option value="accessibility">Accessibility</option>
+				<option value="community hubs">Community hubs</option>
+				<option value="connectivity">Connectivity</option>
+				<option value="cost savings">Cost savings</option>
+				<option value="data tool">Data tool</option>
+				<option value="device access">Device access</option>
+				<option value="devices-and-data">Devices and data</option>
+				<option value="digital exclusion">Digital exclusion</option>
+				<option value="digital-first">Digital-first</option>
+				<option value="digital infrastructure">Digital infrastructure</option>
+				<option value="digital inclusion">Digital inclusion</option>
+				<option value="digital literacy">Digital literacy</option>
+				<option value="digital poverty">Digital poverty</option>
+				<option value="digital skills">Digital skills</option>
+				<option value="digital tools">Digital tools</option>
+				<option value="disadvantaged areas">Disadvantaged areas</option>
+				<option value="Greater Manchester">Greater Manchester</option>
+				<option value="health and social care">Health and social care</option>
+				<option value="ICT systems">ICT systems</option>
+				<option value="inequality">Inequality</option>
+				<option value="integrated care systems">Integrated Care Systems</option>
+				<option value="intersectionality">Intersectionality</option>
+				<option value="local authorities">Local authorities</option>
+				<option value="mapping tool">Mapping tool</option>
+				<option value="mental health services">Mental health services</option>
+				<option value="minoritised ethnic communities">Minoritised ethnic communities</option>
+				<option value="older carers">Older carers</option>
+				<option value="primary care">Primary care</option>
+				<option value="regional inequality">Regional inequality</option>
+				<option value="social care">Social care</option>
+				<option value="survey">Survey</option>
+				<option value="technology">Technology</option>
+				<option value="unpaid carers">Unpaid carers</option>
+				<option value="UK">UK</option>
+				<option value="workforce training">Workforce training</option>
+			</select>
+
+
+			<div class="info-module2" data-tags="digital exclusion, inequality, NHS, accessibility, devices-and-data">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Digital exclusion">
+					</div>
+					<div class="info-text2">
+						<h3>Tackling inequality and digital exclusion in the future NHS</h3>
+						<p>Charity report offering policy recommendations on reducing inequality and digital exclusion</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="" target="_blank">
+											Good Things Foundation (2025)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Tackling inequality and digital exclusion in the future NHS.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Identifies proven tools to reduce digital exclusion, such as device and data provision schemes, community digital health hubs (often in libraries), adding digital inclusion screening questions, and publishing inclusion metrics to track progress.</li>
+						<li>Calls for an equity-first approach, recommending funding devices and connectivity, building accessibility in by default, and collecting and publishing digital exclusion metrics to drive accountability.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Health services should invest in schemes that provide devices and internet connectivity to people who lack access, ensuring they can engage with digital health tools.</li>
+						<li>All digital health services need to be designed with accessibility by default (for example, easy-to-use interfaces and support for those with disabilities or low digital skills) so that no patient is left behind.</li>
+						<li>Organisations should collect and publish data on digital exclusion (for instance, who is unable to use online services and why) to increase transparency and drive improvements in inclusion.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This report reinforces that reducing digital exclusion in healthcare requires practical support and an equity-first mindset.
+						It offers concrete ideas, such as distributing free devices and data packages and using libraries as digital health hubs,
+						that health services can implement to include underserved groups. By urging organisations to publish digital inclusion metrics,
+						it makes inclusion a visible priority and pushes for greater accountability.
+						Overall, the findings encourage health and care leaders to design digital services around those at the margins,
+						ensuring innovations benefit everyone.</p>
+				</div>
+			</div>
+
+			<div class="info-module2" data-tags="digital exclusion, minoritised ethnic communities, primary care, digital-first, intersectionality">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Digitalised primary care">
+					</div>
+					<div class="info-text2">
+						<h3>Digitalised primary care in the UK: experiences of minoritised ethnic communities</h3>
+						<p>Qualitative study exploring how a digital-by-default approach to primary care affects people from minoritised ethnic communities in the UK.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.3399/BJGP.2024.0308" target="_blank">
+											Islam, F., Bailey, S., & Netto, G. (2024) <i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Digitalised primary care in the UK: a qualitative study of the experiences of minoritised ethnic communities. <i>British Journal of General Practice</i>
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>“Digital-by-default” GP access can reproduce or worsen existing barriers for patients from minoritised ethnic groups. Identified issues include lack of devices or data, limited digital skills, insufficient language support, and services not designed for diverse needs.</li>
+						<li>Highlights structural inequities in digital healthcare access and emphasises the need for solutions such as culturally accessible service design, interpreter or multilingual support, and alternative (non-digital) access routes.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Co-design digital primary care tools with input from ethnic minority communities to ensure cultural and linguistic appropriateness.</li>
+						<li>Embed interpreter services and multi-language options into digital health platforms so that language barriers are minimised.</li>
+						<li>Maintain alternative ways to access GP services (e.g., telephone or face-to-face appointments) for patients who cannot use digital systems.</li>
+						<li>Provide digital skills training and support, along with device or data access initiatives, targeted at groups who are at risk of exclusion.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This research highlights the risk that a shift to digital-first healthcare can inadvertently deepen inequalities. It shows that without accommodations, patients from some minority ethnic communities may be left behind by digital systems. Health providers should ensure digital services are co-designed with diverse users and offer language support and offline alternatives. In practice, this means tackling the digital skills gap and addressing cultural and language needs so that technology in healthcare benefits everyone.</p>
+				</div>
+			</div>
+
+			<div class="info-module2" data-tags="digital inclusion, mental health services, device access, connectivity, NHS">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Digital inclusion initiative">
+					</div>
+					<div class="info-text2">
+						<h3>Impact of a Digital Inclusion Initiative to facilitate access to mental health services</h3>
+						<p>Peer-reviewed qualitative study evaluating a digital inclusion initiative aimed at improving access to mental health services.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.2196/51315" target="_blank">
+											Oliver, A., Chandler, E., & Gillard, J.A. (2024)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Impact of a Digital Inclusion Initiative to facilitate access to mental health services: Service User Interview Study. <i>JMIR Mental Health</i>, 11, e51315.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Providing a tablet, internet data, and one-to-one digital skills support to excluded mental health service users improved their access to services, increased engagement, and enhanced their perceived control over care</li>
+						<li>Offers direct evidence that supplying devices (with connectivity) and training in digital skills can close access gaps for people with serious mental illness.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Invest in programmes that provide devices (e.g., tablets) and free or subsidised internet connectivity to mental health service users who lack digital access.</li>
+						<li>Incorporate one-to-one digital skills support or mentoring for service users within mental health services to help them engage with online care tools and platforms.</li>
+						<li>Include digital inclusion initiatives as part of mental health care plans, recognising that improving digital access can lead to better engagement and patient empowerment in this population.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study offers concrete evidence that targeted digital inclusion efforts can significantly benefit people using mental health services. By equipping individuals with technology and one-to-one support, it enabled those with serious mental illness to engage more with their care and feel more in control. The positive outcomes from this London-based initiative suggest that similar approaches could be adopted elsewhere. It underlines that relatively small investments in devices and training can have a big impact on accessibility and outcomes in mental health care.</p>
+				</div>
+			</div>
+
+
+			<div class="info-module2" data-tags="digitalisation, unpaid carers, older carers, social care, digital exclusion">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Digitalisation of social care">
+					</div>
+					<div class="info-text2">
+						<h3>Digitalisation of social care &amp; implications for older unpaid carers</h3>
+						<p>Peer-reviewed qualitative study examining how the digitalisation of social care affects older unpaid carers.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.2196/60056" target="_blank">
+											Rousaki, A., Zamani, E.D., Sbaffi, L., Hamblin, K. & Black, R. (2024)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									The digitalisation of social care in England and implications for older, unpaid carers: Constructionist thematic analysis. <i>Journal of Medical Internet Research</i>
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span(class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Older unpaid carers acknowledge some benefits of digital technology in care but report that digitalisation is often imposed (“coercive”), leading to feelings of exclusion. Many face affordability barriers to technology. They advocate for co-producing digital services with carers and for retaining offline alternatives.</li>
+						<li>Demonstrates that digital policy can either widen or reduce inequity depending on implementation. Recommends a “margins-first” design approach – prioritising those most at risk of digital exclusion – and providing financial support (e.g., for connectivity) to ensure no carer is left behind.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Involve older carers in the design and development of digital social care tools to ensure their needs and concerns are addressed from the outset.</li>
+						<li>Ensure non-digital options (such as paper-based or telephone services) remain available in social care, so carers who are not online can still access support and information.</li>
+						<li>Provide financial assistance (for example, subsidies for internet connection or devices) to help carers who cannot afford the costs of getting online.</li>
+						<li>Adopt a “margins-first” approach in digital strategy – focusing first on those who are least digitally included – to prevent new technology initiatives from increasing inequality among carers.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This research highlights that the drive to digitalise social care must be balanced with inclusivity. Older carers in the study felt digital services were sometimes rolled out without enough support or choice, leaving them alienated. The findings show the importance of offering alternative offline support and involving carers in co-designing digital solutions. They also point to a need for practical help, such as funding for internet access, so that those carers who do want to use digital tools can do so without hardship.</p>
+				</div>
+			</div>
+
+			<div class="info-module2" data-tags="carers, technology, survey, digital tools, digital exclusion">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="State of Caring technology chapter">
+					</div>
+					<div class="info-text2">
+						<h3>Use of technology by carers and barriers experienced</h3>
+						<p>Large national survey of over 7,500 carers, with a focus on how carers use technology in their caring roles.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://www.carersuk.org/media/khgkb3fs/state-of-caring-2019-report.pdf" target="_blank">
+											Carers UK (2019) <i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									State of Caring (technology chapter).
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Finds that among carers who use technology, 79% use the internet to find information. Many also use digital tools for caring (such as online monitoring or medication management), but the cost of technology and low digital literacy remain significant barriers.</li>
+						<li>Reveals clear digital gaps linked to income and age: older carers and those on low incomes are much less able to benefit from technology. Supports the need for targeted digital skills training, affordable connectivity or devices for carers, and wider provision of assistive technologies.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Offer targeted digital skills training for carers (especially older carers) to build their confidence in using online resources and tools.</li>
+						<li>Introduce subsidies or funding schemes to help carers on low incomes afford internet access and necessary devices.</li>
+						<li>Promote and provide assistive technologies (e.g., reminder apps, remote monitoring tools) to support carers, ensuring these tools are affordable and user-friendly.</li>
+						<li>Incorporate digital inclusion considerations into carer support programmes, focusing on reaching those who face financial or skills-related barriers to using technology.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>The State of Caring survey shows that while many carers are harnessing online information and tools, a sizeable number are held back by cost and skills barriers. It highlights that older carers and those with lower incomes may not be benefiting from digital resources as much as others. This evidence suggests a need for more support – from training initiatives to financial help – to ensure all carers can access and use helpful technology. Encouraging the adoption of simple, low-cost assistive tech could make caring easier for those who currently struggle to use digital solutions.</p>
+				</div>
+			</div>
+
+			<div class="info-module2" data-tags="digital poverty, inequality, UK, connectivity, digital skills">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Digital Poverty in the UK">
+					</div>
+					<div class="info-text2">
+						<h3>Digital Poverty in the UK</h3>
+						<p>National analysis report assessing the extent of digital poverty across the UK and its contributing factors.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://digitalpovertyalliance.org/wp-content/uploads/2023/09/Deloitte-Digital-Poverty_FinalReport_29092023.pdf" target="_blank">
+											Digital Poverty Alliance &amp; Deloitte (2023)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Digital Poverty in the UK: A socio-economic assessment of the implications of digital poverty in the UK.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Estimates that 13–19 million people (aged 16 and over) in the UK experience digital poverty. The report maps regional variations in digital exclusion and identifies key drivers including income, infrastructure, and skills. </li>
+						<li>Frames digital access as a fundamental determinant of inequality (including health and social care inequality). Underlines the need for large-scale investment in providing devices, affordable connectivity, and digital skills training to reduce the digital divide.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Recognise digital access and skills as a key social determinant of health and wellbeing, embedding digital inclusion in equality and public health strategies.</li>
+						<li>Implement nationwide programmes to provide low-cost or free internet access and digital devices to individuals and communities affected by digital poverty.</li>
+						<li>Invest in widespread digital skills training initiatives, focusing on regions and groups with high levels of digital exclusion to improve competencies and confidence.</li>
+						<li>Use data on regional digital exclusion (such as digital poverty indexes) to target funding and interventions to the areas of greatest need.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>
+						This report highlights the sheer scale of digital exclusion in the UK, casting it as an urgent social inequality. It makes the case that being connected and digitally capable is now as important to people’s life chances as traditional factors like income or education. The findings and recommendations suggest that only a concerted, large-scale effort – from subsidising internet access and devices to improving skills – will close the gap. For policymakers, the message is clear: addressing digital poverty is essential to improving health, care and overall social outcomes.
+					</p>
+				</div>
+			</div>
+
+			<div class="info-module2" data-tags="digital exclusion, mapping tool, data tool, Greater Manchester, local authorities">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Digital Exclusion Risk Index">
+					</div>
+					<div class="info-text2">
+						<h3>Mapping digital exclusion risk</h3>
+						<p>Public data tool and methodology developed to identify the people and places at highest risk of digital exclusion.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://greatermanchester-ca.gov.uk/what-we-do/digital/get-online-greater-manchester/greater-manchester-wide-support/digital-exclusion-risk-index-deri/" target="_blank">
+											Greater Manchester Combined Authority (2023-24)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Digital Exclusion Risk Index (DERI).
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Introduces a composite index (DERI) that identifies which areas and population groups are at highest risk of digital exclusion, to guide targeted investment in inclusion (e.g., in skills, devices, connectivity).</li>
+						<li>Demonstrates how the index enables integrated care systems and local authorities to measure and publicly report digital exclusion risk. This transparency supports more equitable allocation of resources – essentially encouraging organisations to “publish the metrics” on digital inclusion.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Adopt data-driven tools like the Digital Exclusion Risk Index to pinpoint high-risk communities and inform where to focus digital inclusion initiatives.</li>
+						<li>Encourage local authorities and health partnerships to publish digital exclusion risk metrics, ensuring transparency and accountability in addressing digital gaps.</li>
+						<li>Allocate funding for digital skills training, devices and connectivity in line with risk index findings, directing resources to the communities most in need.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>
+						This Greater Manchester initiative shows the power of data in tackling digital exclusion. By mapping where digital deprivation is highest, it provides a clear evidence base for targeting support. The approach also promotes accountability by urging organisations to “publish the metrics” on inclusion progress. Overall, it suggests that using such indices can help ensure digital inclusion efforts are efficient and reach those who need them most.
+					</p>
+				</div>
+			</div>
+
+			<div class="info-module2" data-tags="5G, digital infrastructure, health and social care, connectivity, cost savings">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Liverpool 5G Health & Social Care Testbed">
+					</div>
+					<div class="info-text2">
+						<h3>Liverpool 5G Health &amp; Social Care Testbed (2018–2020) Benefits &amp; Outcomes</h3>
+						<p>Programme evaluation of a 5G-enabled health and social care testbed in Liverpool, documenting its benefits and outcomes.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://liverpool5g.org.uk/wp-content/uploads/2020/04/Liverpool-5G-Testbed-Benefits-Outcomes-Impact.pdf" target="_blank">
+											Liverpool 5G Health &amp; Social Care Testbed (2018-2020)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Benefits &amp; Outcomes.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Finds that establishing a community 5G network alongside connected care services was associated with fewer GP visits, lower telecare costs, and improved access to services in a disadvantaged area.</li>
+						<li>Demonstrates that investing in free or low-cost internet connectivity in deprived communities can help reduce gaps in access to health and social care.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Consider implementing community connectivity projects (such as free or subsidised 5G networks) in disadvantaged areas to improve residents’ access to digital health and care services.</li>
+						<li>Support pilot programmes that integrate enhanced digital infrastructure (e.g., 5G) with health and social care initiatives, and evaluate their impact on service use and outcomes.</li>
+						<li>Leverage evidence of cost savings (for example, reductions in GP visits and telecare expenses) to build the case for funding digital infrastructure in health and care settings.</li>
+						<li>Include community connectivity interventions as part of wider strategies to tackle health inequalities, focusing on areas where limited internet access is a barrier to care.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This Liverpool testbed shows how improving digital infrastructure can directly benefit health and care. By providing a deprived community with low-cost 5G access and digital services, the project saw tangible outcomes – people needed fewer GP appointments and telecare costs fell. It indicates that boosting connectivity in disadvantaged areas is not only a matter of digital inclusion but can also ease pressure on traditional health services. The results make a strong case to commissioners that investing in community digital networks can yield both social benefits and cost savings.</p>
+				</div>
+			</div>
+
+			<div class="info-module2" data-tags="digital inclusion, NHS, widening digital participation, community hubs, workforce training">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Improving Digital Health Inclusion evidence scan">
+					</div>
+					<div class="info-text2">
+						<h3>Improving Digital Health Inclusion</h3>
+						<p>Evidence scan reviewing the NHS Widening Digital Participation programme and the lessons learned from its pathfinder projects.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://www.strategyunitwm.nhs.uk/sites/default/files/2021-04/Digital%20Inclusion%20evidence%20scan.pdf" target="_blank">
+											NHS Digital / Strategy Unit (2021)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Improving Digital Health Inclusion: evidence scan (Widening Digital Participation).
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Synthesises learning from the NHS “Widening Digital Participation” pathfinder projects – which included approaches like social prescribing to improve digital skills, setting up community digital health hubs, and upskilling the workforce in digital inclusion.</li>
+						<li>Finds that community-led models (using libraries, local centres, etc.) and providing non-digital alternatives are essential in digital health services to avoid widening health inequalities.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Embed community-based digital inclusion programmes into the health system (for example, partnering with libraries and community centres as “digital health hubs” to support those with low digital engagement).</li>
+						<li>Ensure all digital health initiatives have corresponding non-digital or assisted options (such as telephone support or face-to-face help) so that people without digital access can still receive services.</li>
+						<li>Provide training for health and care staff to help them assist patients with low digital skills, making digital inclusion part of the workforce development agenda.</li>
+						<li>Leverage insights from the Widening Digital Participation pilots to inform national policy, focusing on scaling successful community-led interventions and cross-sector partnerships for digital inclusion.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This evidence scan confirms that improving digital health inclusion goes beyond technology – it requires community engagement and flexible service delivery. The evaluation shows that working through trusted community venues (like libraries) and organisations is key to bringing digitally excluded people on board. Equally, it emphasises the ongoing need for offline alternatives in healthcare, ensuring that digitisation does not leave any groups behind. Overall, the lessons from these pilot programmes offer a clear direction for making digital health initiatives more inclusive at scale.</p>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+			<br>
+
+<!--FURTHER ANALYSIS-->
+			<h2>Further Analysis</h2>
+			<div class="further-analysis">
+				<div class="analysis-item">
+					<img src="images/underserved-image1.jpg" alt="Analysis 1 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Ethnic Disparities in Access to Care</h4>
+						<p>Data showing disparities in access across different ethnic groups</p>
+					</div>
+					<a href="furtheranalysis1.html" class="analysis-button">Read More</a>
+				</div>
+
+				<div class="analysis-item">
+					<img src="images/underserved-image2.jpg" alt="Analysis 2 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
+					</div>
+					<a href="link-to-analysis2.html" class="analysis-button">Read More</a>
+				</div>
+
+				<div class="analysis-item">
+					<img src="images/underserved-image3.jpg" alt="Analysis 3 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
+					</div>
+					<a href="link-to-analysis3.html" class="analysis-button">Read More</a>
+				</div>
+			</div>
+
+		</section>
+		<ul class="actions special">
+			<li><a href="topicsmain.html" class="button primary">Back to topics</a></li>
+		</ul>
+
+	</div>
+	<!-- Footer -->
+	<footer id="footer">
+
+	</footer>
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<ul>Images retrieved from The Centre for Ageing Better's Age-positive image library</ul>
+	</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/js/main.js"></script>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
