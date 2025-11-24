@@ -1,0 +1,843 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Neighbourhood Health</title>
+	<link rel="icon" type="image/x-icon" href="images/favicon.png">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		/* Ensures the chart stays within a fixed size */
+		#fin-chart-container {
+			width: 80%;
+			max-width: 800px;
+			height: 400px;  /* FIXED HEIGHT to prevent infinite growth */
+			margin: auto;
+			position: relative;
+		}
+
+		/* Prevents unwanted infinite resizing */
+		canvas {
+			width: 100% !important;
+			height: 100% !important;
+			display: block;
+			resize: none;  /* Prevents the chart from growing infinitely */
+		}
+	</style>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><img src="images/EquityHubLogo-White2.png" alt="Logo" style="width: 50%" /></a>
+	</header>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul class="links">
+			<li> <a href="index.html">About the Hub</a></li>
+			<li class="active"><a href="topicsmain.html">Our topics</a></li>
+			<li><a href="chartoftheweek.html">Chart of the week</a></li>
+			<li><a href="glossary.html">Glossary of terms</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main">
+		<!-- Post -->
+		<section class="post">
+			<header class="major">
+				<h1>Neighbourhood Health</h1>
+				<div class="box" style="background-color: #09b37b; border-radius: 10px; padding: 24px; color: white; line-height: 1.6; letter-spacing: 0.2px; text-align: left !important;">
+					<h3 style="text-transform: none; margin-top: 0; font-weight: 700; color:#f0f0f0; letter-spacing: 0.5px; text-align: left !important;">What is ‘Neighbourhood health’?</h3>
+					<p style="letter-spacing: 0.5px; text-align: left !important;"> Neighbourhood health is an approach to improving health and wellbeing that brings care closer to where people live. It brings together local health, social care and community services through joined-up, multidisciplinary teams. These teams focus on preventing illness, identifying needs early and supporting people to stay well in their own homes and communities. <br><br> Neighbourhood health relies on strong relationships between local partners, shared goals and clear communication across organisations. Trust, collaboration and shared decision-making are central to making integrated working effective in practice. <br><br> A key aim is to reduce inequalities by directing greater investment and attention to communities with the poorest health outcomes and lowest healthy life expectancy. This includes using local data and equity-focused metrics to understand need, monitor progress and target resources proportionately. <br><br> Neighbourhood health shifts the balance of care from hospitals to local systems. By strengthening coordination, supporting earlier intervention and involving communities in shaping services, it seeks to create more accessible, person-centred and equitable support. <br><br> Note: This topic is under development and we are continuing to add content. </p>
+				</div>
+			</header>
+			<!--								KEY-->
+<!--			<div class="key">-->
+<!--				<div class="key-item age-group">-->
+<!--					Groups by Demographic Factors-->
+<!--				</div>-->
+<!--				<div class="key-item socio-economic-group">-->
+<!--					Groups by Social and Economic Factors-->
+<!--				</div>-->
+<!--				<div class="key-item health-status-group">-->
+<!--					Groups by Health Status-->
+<!--				</div>-->
+<!--			</div>-->
+
+			<!--								KEY END-->
+
+			<br>
+			<div class="search-container">
+				<input type="text" id="searchInput" placeholder="Search for evidence..." />
+			</div>
+
+			<select id="tagInput">
+				<option value="">-- Select a tag --</option>
+				<option value="case studies">Case Studies</option>
+				<option value="collaboration">Collaboration</option>
+				<option value="cross-sector collaboration">Cross-sector Collaboration</option>
+				<option value="cultural change">Cultural Change</option>
+				<option value="determinants of health">Determinants of Health</option>
+				<option value="digital infrastructure">Digital Infrastructure</option>
+				<option value="frailty">Frailty</option>
+				<option value="funding">Funding</option>
+				<option value="governance">Governance</option>
+				<option value="health inequalities">Health Inequalities</option>
+				<option value="integrated care">Integrated Care</option>
+				<option value="integrated care systems">Integrated Care Systems</option>
+				<option value="integration barriers">Integration Barriers</option>
+				<option value="leadership">Leadership</option>
+				<option value="local integration">Local Integration</option>
+				<option value="multimorbidity">Multimorbidity</option>
+				<option value="neighbourhood health">Neighbourhood Health</option>
+				<option value="neighbourhood integration">Neighbourhood Integration</option>
+				<option value="older adults">Older Adults</option>
+				<option value="person-centred care">Person-centred Care</option>
+				<option value="primary care">Primary Care</option>
+				<option value="social care">Social Care</option>
+				<option value="social services">Social Services</option>
+				<option value="stakeholder perspectives">Stakeholder Perspectives</option>
+				<option value="system infrastructure">System Infrastructure</option>
+				<option value="workforce">Workforce</option>
+			</select>
+
+			<div class="info-module2" data-tags="neighbourhood health, integrated care, equity, cross-sector collaboration, digital infrastructure">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Integrated neighbourhood model">
+					</div>
+					<div class="info-text2">
+						<h3>Defining the integrated neighbourhood model: a systematic review of key domains</h3>
+						<p>A systematic review of 29 studies defining the integrated neighbourhood care model and proposing key domains to guide implementation.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1186/s12889-025-22582-x" target="_blank">
+											Iqbal, F.M., Kayikci, S., Lowther-Payne, H., Aly, M., et al. (2025)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Defining the integrated neighbourhood model: a systematic review of key domains and framework development. <i>BMC Public Health</i>, 25(1), 1,374.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>The review synthesised evidence from 62 local and international integrated care initiatives (29 included studies) and identified core domains for neighbourhood-level integration, including leadership roles, cross-sector partnership principles, integrated multidisciplinary teams, community-tailored priorities, and coordinated service delivery.</li>
+						<li>Six common success factors emerged: co-located multidisciplinary teams, shared data systems, a preventive population health focus, population segmentation for targeted care, strong community input, and flexible governance, all linked to better coordinated, person-centred care.</li>
+						<li>Co-location of services and shared decision-making among providers were associated with improved continuity and coordination, breaking down professional silos and improving experiences for people who use services.</li>
+						<li>Equity outcomes were rarely measured, limiting conclusions about impacts on health inequalities and revealing a major evidence gap in equity measurement within integrated neighbourhood initiatives.</li>
+						<li>Integration was most effective where systems had strong cross-sector relationships and pooled or aligned resources; lack of trust, fragmented funding and incompatible IT systems were major obstacles.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Embed equity indicators in neighbourhood performance frameworks, using metrics that track outcomes by deprivation, ethnicity and other equity dimensions.</li>
+						<li>Apply proportionate investment to neighbourhoods with the poorest health outcomes, directing more resources to areas with the greatest needs.</li>
+						<li>Develop shared digital infrastructure so integrated teams can share information and identify inequities in access and outcomes in real time.</li>
+						<li>Strengthen cross-sector leadership and governance that prioritise equity in service design and implementation.</li>
+						<li>Commission long-term evaluations of neighbourhood care models that explicitly measure impacts on health inequalities.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This review shows that integrated neighbourhood care models can support more coordinated and community-focused services, but also that equity has often been treated as an afterthought. Many initiatives improved coordination and access in general, yet rarely measured outcomes for underserved groups. Without equity metrics, it is difficult to know who is benefiting and who might be left behind.</p>
+					<p>From an equity perspective, neighbourhood integration should be used to reach people with unmet needs, for example isolated or high-risk residents, rather than only improving care for those already engaged. The evidence suggests that collaboration and co-location can improve person-centred care, but this will not automatically reduce inequalities without proportionate investment in poorer neighbourhoods, community co-design, and indicators that highlight differential outcomes.</p>
+					<p>The analysis suggests that integrated neighbourhood models need explicit equity goals built into their governance, funding and data. Integration on its own will not close health gaps; it needs to be combined with targeted resource allocation, equity-focused metrics and meaningful involvement of communities most affected by poor health and social conditions.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="neighbourhood health, case studies, leadership, governance, collaboration">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Neighbourhood Integration Project">
+					</div>
+					<div class="info-text2">
+						<h3>Neighbourhood Integration Project</h3>
+						<p>Programme of work capturing how more joined-up care has been delivered at neighbourhood level in England through case studies and thematic briefings.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://www.nhsconfed.org/networks-countries/community-network/neighbourhood-integration-project" target="_blank">
+											NHS Confederation Community Network (2020)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Neighbourhood Integration Project – case studies and briefings on delivering neighbourhood-level integrated care. NHS Confederation, London.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Successful neighbourhood-level integration depended on strong local leadership, clearly shared goals and effective communication across professional and organisational boundaries, helping NHS, local government and voluntary sector organisations work as one team.</li>
+						<li>Common challenges included misaligned professional cultures and identities, silo working and technical barriers such as incompatible IT systems and difficulties in sharing data, which slowed referrals and coordination.</li>
+						<li>Structural changes like new multi-agency teams or hubs mattered, but relational and cultural factors such as trust, collaboration and shared responsibility for people who use services were critical to making integration work.</li>
+						<li>Practical strategies used included co-locating multidisciplinary teams, shared governance frameworks for decision-making and resource-sharing, joint training and regular cross-sector meetings to build mutual understanding.</li>
+						<li>Sustaining integration was difficult with short-term funding and pilot status; longer-term support and adaptability (including during COVID-19, for example through digital collaboration tools) were important to maintain progress.</li>
+					</ul>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>The project reported anecdotal improvements such as better patient and community satisfaction, reduced duplication and faster decision-making; one case study described reduced waiting times for community support following joint triage meetings, although quantitative data were not collected consistently.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Provide sustained, flexible funding for neighbourhood integration, including devolved or pooled budgets and investment in infrastructure such as IT systems and shared locations.</li>
+						<li>Support shared governance and accountability frameworks for neighbourhood partnerships, giving integrated teams formal authority and clear responsibilities.</li>
+						<li>Invest in workforce integration and cultural change, including joint training, cross-organisation roles and performance expectations that value collaboration.</li>
+						<li>Enable data and information-sharing at local level by addressing legal and technical barriers and standardising agreements and interoperability.</li>
+						<li>Encourage community participation and co-production in neighbourhood service design, including representation on neighbourhood boards and support for community development.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>The Neighbourhood Integration Project shows that joining up care locally is possible and can improve experiences, but it is complex and highly dependent on people and relationships. Integration worked best where local leaders built trust and a shared identity across organisations, so people who draw on care and support experienced one joined-up team rather than separate services.</p>
+					<p>The project also highlights that structural reforms and new teams are not enough on their own. Persistent cultural differences, mistrust and siloed ways of working can continue to fragment care. From an equity perspective, this matters because people with complex needs are most reliant on smooth coordination between services and are most affected when relationships and communication break down.</p>
+					<p>COVID-19 showed that local systems can adapt quickly and collaborate more closely when there is a shared sense of urgency. The challenge is to keep that momentum, maintain focus on disadvantaged groups and sustain integration beyond short-term projects. The lessons from these case studies provide practical pointers for neighbourhood teams and policymakers on how to build and protect this collaborative capacity.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="neighbourhood health, workforce, integrated care, roles, cultural change">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Workforce approaches to neighbourhood integration">
+					</div>
+					<div class="info-text2">
+						<h3>Delivering integrated care at neighbourhood level: approaches to workforce</h3>
+						<p>Briefing from the Community Network on how local areas have addressed workforce challenges when integrating care at neighbourhood level.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://www.nhsconfed.org/case-studies/delivering-integrated-care-neighbourhood-level-approaches-workforce" target="_blank">
+											Community Network (2020)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Delivering integrated care at neighbourhood level: approaches to workforce. NHS Confederation (Community Network briefing series).
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Aligning organisational cultures and professional practices was a key workforce challenge; staff from NHS, local authorities and the voluntary sector often had different working styles and expectations that initially hindered teamwork.</li>
+						<li>Workforce rigidity and siloed roles were addressed through new hybrid roles such as care navigators and community link workers, and through job-swaps and shadowing to build understanding across professions.</li>
+						<li>Staff shortages and retention problems, especially in community and social care roles, put pressure on integrated teams; some areas used joint recruitment campaigns and development opportunities to attract and keep staff.</li>
+						<li>Differing employment terms and management structures created complexity; co-location under a single operational lead and Memoranda of Understanding were used to create more unified day-to-day working.</li>
+						<li>Joint training and continuous learning, for example multi-disciplinary workshops on holistic care planning, helped build a common knowledge base and strengthened mutual respect and collaboration.</li>
+					</ul>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>One locality reported a 20 per cent increase in staff feeling supported by colleagues from other agencies and reduced duplication of work after adopting an integrated workforce model, although most evidence was qualitative.</li>
+						<li>Three local case studies illustrated workforce innovations such as pooled budgets for a single neighbourhood team manager, rotational posts across health and social care, and a joint training academy for integrated care skills.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Develop frameworks for cross-sector workforce planning and development, including joint funding for community roles and, where feasible, pooled HR arrangements.</li>
+						<li>Invest in training for integrated care competencies, such as interdisciplinary communication, care coordination and community engagement, and embed these in professional education and development.</li>
+						<li>Support new integrated roles and career paths, with clear job descriptions, progression routes and fair pay for roles like care coordinators and community health workers.</li>
+						<li>Facilitate secondments and joint appointments between organisations to break down institutional barriers and spread integrated working.</li>
+						<li>Promote inclusive, community-reflective hiring so neighbourhood teams better reflect and build trust with the communities they serve.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This briefing underlines that integrated care depends on integrated teams. Without attention to workforce cultures, roles and conditions, neighbourhood integration remains a structural ambition rather than an everyday reality.</p>
+					<p>The evidence shows that breaking down professional silos, creating cross-cutting roles and investing in joint training can improve coordination and support people with complex needs more effectively. From an equity perspective, a stable, community-connected workforce is better placed to notice and respond to local gaps in access and support, while fragmented teams risk leaving those with multiple needs to navigate services alone.</p>
+					<p>The examples presented suggest that workforce policy and HR practice are as important as organisational design in achieving integrated, equitable neighbourhood care. Ignoring these human factors can undermine even well-designed integration initiatives.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="integrated care, UK comparison, policy, funding, health inequalities">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Four-country integration comparison">
+					</div>
+					<div class="info-text2">
+						<h3>Integrating health and social care: comparison across the four UK countries</h3>
+						<p>Nuffield Trust report assessing two decades of health and social care integration policy and progress in England, Scotland, Wales and Northern Ireland.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://www.nuffieldtrust.org.uk/research/integrating-health-and-social-care-a-comparison-of-policy-and-progress-across-the-four-countries-of-the-uk" target="_blank">
+											Reed, S., Oung, C., Davies, J., Dayan, M., Scobie, S. (2021)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Integrating health and social care: a comparison of policy and progress across the four countries of the UK. Nuffield Trust, London.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>All four UK nations have long pursued integration to improve experience, quality, efficiency and population health, but progress has been slow and outcomes mixed, with limited evidence of major benefits for people using services.</li>
+						<li>There is a mismatch between ambitious aims and what integration can realistically deliver; expected improvements in patient satisfaction, emergency admissions and delayed discharges have not been realised at scale.</li>
+						<li>Data limitations and inconsistent metrics across countries make it difficult to assess impact; indicators such as emergency admissions and delayed transfers of care show, at best, modest and unsustained improvements.</li>
+						<li>No country has demonstrated significant cost savings from integration; pooled budgets have not delivered strong evidence of system-wide financial gains.</li>
+						<li>Repeated structural reforms have often overlooked local relationships, resources and culture; legal duties to collaborate have not been sufficient to create effective, trusting partnerships.</li>
+					</ul>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>Over 20 years of reform, patient satisfaction has not markedly improved and has sometimes fallen, despite integration policies.</li>
+						<li>Delayed transfers of care improved briefly in parts of the UK but gains were not sustained; emergency admissions for older people did not fall.</li>
+						<li>By 2020 all four countries had formal integrated structures (for example, 42 Integrated Care Systems in England and 31 integration authorities in Scotland), yet performance on key outcomes did not clearly improve in line with these changes.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Set realistic expectations for integration, focusing on improving experience and coordination rather than promising quick cost savings or dramatic outcome gains.</li>
+						<li>Invest in better data and evaluation, including balanced scorecards with patient-reported outcomes, experience, inequality metrics and utilisation.</li>
+						<li>Focus on enabling conditions such as adequate social care funding, workforce capacity and aligned incentives, not only on new structures.</li>
+						<li>Strengthen leadership and collaborative culture through joint leadership development and shared accountability frameworks.</li>
+						<li>Embed equity goals explicitly in integration plans and reporting, so that reducing inequalities is a core objective rather than an implicit expectation.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This report offers a realistic assessment of integration across the UK. It shows that structural change and pooled budgets alone have not delivered the expected improvements in outcomes or savings, and that underlying issues such as social care funding and workforce shortages limit what integration can achieve.</p>
+					<p>From an equity perspective, the findings suggest that integration needs to be paired with investment in community and social care services and with clear equity objectives. Without this, reforms risk reorganising systems without changing the experience of people with the greatest needs, including those who rely most on coordinated health and social care support.</p>
+					<p>The analysis highlights that integration is a long-term, relational process. For neighbourhood health, this means national policies need to support local systems with time, resources and clear but realistic goals, rather than expecting rapid, measurable gains across all indicators.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="primary care, social care, integration barriers, London, system infrastructure">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Barriers between primary and social care">
+					</div>
+					<div class="info-text2">
+						<h3>Barriers to integration between primary and social care in London</h3>
+						<p>Qualitative study of how GPs and practice managers perceive barriers to integrating primary and social care in London.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1136/bmjopen-2019-029702" target="_blank">
+											Naqvi, H., Russell, J., Salway, S., Peckham, S. (2019)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Barriers to integration between primary and social care: frontline perspectives from GPs and practice managers in London. <i>BMJ Open</i>, 9(11), e029702.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>The study identifies three main barriers to integration: difficulties accessing social services, poor interprofessional relationships and infrastructural problems.</li>
+						<li>Communication issues and siloed working cultures led to delays in referrals and fragmented care coordination.</li>
+						<li>Inadequate interoperability between IT systems and lack of pooled budgets hindered cross-sector collaboration.</li>
+						<li>Misaligned incentives between health and social care management reinforced divides and weakened efforts to build person-centred, integrated services.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>The findings highlight persistent systemic barriers to integration in London’s health and social care system.</li>
+						<li>Priorities include improving interoperability of information systems, investing in shared training and interprofessional collaboration, and developing pooled funding models.</li>
+						<li>Policy frameworks should promote joint accountability and remove incentives that maintain siloed working practices.</li>
+					</ul>
+
+					<h3>Limitations</h3>
+					<ul>
+						<li>The research was limited to London GP surgeries, which may reduce generalisability to other areas.</li>
+						<li>Social care perspectives were underrepresented, as participants were mainly long-serving primary care professionals.</li>
+						<li>The cross-sectional design limits understanding of how integration challenges change over time.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study shows how structural and relational barriers between primary and social care can entrench inequities in access and experience. When communication fails or responsibility is blurred, people needing multi-agency support are most at risk of delays and gaps in care.</p>
+					<p>The findings highlight that fragmentation is not only an operational issue but also a distributive one: under-resourced areas and systems with weaker cross-sector collaboration are more likely to deliver disjointed care. Problems with IT, funding and incentives create variable local capacity to coordinate support, which in turn shapes neighbourhood-level inequalities.</p>
+					<p>The authors argue that integration policies must go beyond technical fixes and address power, culture and accountability. For integration to support equity, frontline professionals need shared governance, interoperable tools and incentives that support collaboration rather than reinforce organisational boundaries.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="older adults, frailty, integrated care, stakeholder perspectives, person-centred care">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Frailty and integrated care">
+					</div>
+					<div class="info-text2">
+						<h3>Stakeholder perspectives on integrated care for older people with frailty</h3>
+						<p>Systematic review of how service users, carers and providers view integrated care for older people living with frailty.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1371/journal.pone.0216488" target="_blank">
+											Sadle, J., Hardy, B., Kharicha, K., Keating, N., Iliffe, S. (2019)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Stakeholder perspectives on integrated care for older people with frailty: a systematic review. <i>PLOS ONE</i>, 14(5), e0216488.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Older people and carers prioritised relational continuity, trust and personalised care, while providers focused more on coordination and system integration.</li>
+						<li>Implementation was influenced by perceptions of interventions, organisational readiness, leadership and wider system enablers and barriers.</li>
+						<li>Structural issues, such as complex care pathways, poor navigation and limited involvement of service users and carers, impeded integration.</li>
+						<li>Contextual and cultural alignment across organisations was essential for sustainable integrated care for older people with frailty.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Align policy and practice with the lived priorities of older people and carers, not only system efficiency goals.</li>
+						<li>Promote co-production, joint accountability and investment in workforce training to support person-centred, trust-based care.</li>
+						<li>Support adaptive, locally responsive implementation rather than rigid, top-down models, recognising variation in organisational readiness.</li>
+					</ul>
+
+					<h3>Limitations</h3>
+					<ul>
+						<li>Most evidence came from high-income settings, limiting understanding of other contexts.</li>
+						<li>Carer perspectives were underrepresented and socio-economic and ethnic diversity were not explored in depth.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This review shows that for older people with frailty, integrated care must be relational as well as structural. People who use services value continuity, trust and personalised support, and may not experience system-level integration as positive if these elements are missing.</p>
+					<p>From a neighbourhood health perspective, integration works best when rooted in local networks of trust between professionals, communities and individuals. Where local relationships and navigation support are weak, older people face disjointed pathways and barriers to preventative and social support.</p>
+					<p>The review highlights that organisational readiness and alignment shape where integration is realised. Better resourced areas with stronger relationships are more able to build integrated, person-centred neighbourhood care, which raises concerns about geographical inequity in how older people experience integration.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="Greater Manchester, STPs, local integration, leadership, funding equity">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Greater Manchester STPs">
+					</div>
+					<div class="info-text2">
+						<h3>Challenges and opportunities for local health and social care integration in Greater Manchester</h3>
+						<p>Study of integration through Greater Manchester’s Sustainability and Transformation Partnerships, focusing on leadership, collaboration and funding equity.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1108/JICA-07-2021-0040" target="_blank">
+											Chang, C. (2022)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Challenges and opportunities for local health and social care integration: insights from Greater Manchester’s Sustainability and Transformation Partnerships. <i>Journal of Integrated Care</i>, 30(5), 1–15.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Pooled budgets, strong local leadership and prior collaborative experience were critical in advancing integration across sectors.</li>
+						<li>Sustainability and Transformation Partnerships illustrated the complexity of local integration processes and governance.</li>
+						<li>Persistent inequalities existed across Greater Manchester’s ten localities, driven by differences in motivation, resources and capacity for collaboration.</li>
+						<li>Recommendations included promoting shared leadership models, investing in collaborative infrastructure and addressing inequities in funding and capability.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Adopt place-based integration models that combine shared governance with flexibility to respond to local contexts.</li>
+						<li>Strengthen leadership capacity and cultivate a culture of collaboration to support equitable progress across localities.</li>
+						<li>Reduce funding disparities, embed learning across local systems and develop mechanisms to prevent integration from widening gaps between better and worse resourced areas.</li>
+					</ul>
+
+					<h3>Limitations</h3>
+					<ul>
+						<li>The focus on Greater Manchester may limit generalisability to other integrated care systems.</li>
+						<li>Variation in local data and governance structures made comparisons difficult.</li>
+						<li>The analysis emphasised organisational and policy perspectives rather than service user or community experiences.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study shows how integration is shaped by local histories, leadership and resource distribution. Areas with stronger relationships and pooled budgets were better placed to deliver integrated care, while others lagged, raising concerns about geographical inequity.</p>
+					<p>For neighbourhood health, the findings highlight that place-based integration can support more responsive care but may also amplify existing regional advantages if leadership and resources are uneven. Integration, therefore, needs deliberate strategies to support weaker systems, not only to empower those already ahead.</p>
+					<p>The analysis frames integration as a negotiated practice rather than a uniform policy process. It suggests that local governance must actively counterbalance differences in capacity and funding if integrated care is to support, rather than undermine, equity across neighbourhoods.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="ICS, health inequalities, equity, integrated care systems, England">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="ICSs and health inequalities">
+					</div>
+					<div class="info-text2">
+						<h3>How Integrated Care Systems are addressing health inequalities in England</h3>
+						<p>Analysis of Integrated Care System plans in England and how they propose to tackle health inequalities.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1108/JICA-08-2022-0044" target="_blank">
+											Goddard, M. (2023)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									How integrated care systems are addressing health inequalities: an analysis of ICS plans in England. <i>Journal of Integrated Care</i>, 31(2), 145–158.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Integrated Care Systems (ICSs) have potential to address inequalities in healthcare access and the wider social determinants of health through collaboration with non-health partners.</li>
+						<li>The place-based structure of ICSs supports local approaches that can integrate public health, social care and community assets.</li>
+						<li>There is substantial variation in how ICSs define and operationalise equity; many plans lack specific strategies, measurable outcomes or detailed metrics.</li>
+						<li>In several plans, equity is treated as a secondary rather than central priority, leading to inconsistent commitment and governance.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>ICSs offer a major opportunity to embed equity in integrated care, but this requires stronger national guidance and clearer accountability frameworks.</li>
+						<li>Investment in local analytical capacity is needed so ICSs can measure and track progress on inequalities.</li>
+						<li>ICSs should be required to develop measurable equity goals and to engage meaningfully with local authorities, voluntary organisations and communities.</li>
+						<li>Without explicit targets and resources, there is a risk that health equity remains rhetorical rather than implemented in practice.</li>
+					</ul>
+
+					<h3>Limitations</h3>
+					<ul>
+						<li>The study analyses plan documents rather than implementation data, capturing intentions rather than realised impact.</li>
+						<li>Variations in plan quality and detail limit comparability, and longitudinal evaluation is needed to understand outcomes.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This analysis highlights a gap between the potential of ICSs to reduce inequalities and the current strength of their plans. Many systems acknowledge equity but lack concrete strategies, metrics and governance arrangements to drive change.</p>
+					<p>For neighbourhood health, the place-based design of ICSs is important, but its impact depends on the depth of local partnerships and the priority given to addressing social determinants. The variability in plans suggests that some areas may move faster than others, risking further geographical inequalities.</p>
+					<p>The paper points to the need for equity to be a defining objective of ICS governance, supported by national expectations and local capacity. Without this, integration may improve coordination in general but fail to reduce disparities in access, experience and outcomes.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="Manchester, neighbourhood integration, leadership, cultural change, evidence gaps">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Neighbourhood integration in Manchester">
+					</div>
+					<div class="info-text2">
+						<h3>Understanding and supporting neighbourhood-level integration in Manchester</h3>
+						<p>Rapid review of factors influencing integration of health and social care at neighbourhood level in Manchester.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://arc-gm.nihr.ac.uk/media/Resources/OHC/CLAHRC%20GM%20Manchester%20Integration%20report%20Part%20A%20final.pdf" target="_blank">
+											NIHR CLAHRC Greater Manchester (2019)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Understanding and supporting the integration of health and social care at a neighbourhood level in Manchester. Manchester: NIHR Collaboration for Leadership in Applied Health Research and Care Greater Manchester.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Neighbourhood integration depended on strong, visible leadership, shared objectives and clear communication across professional and organisational boundaries.</li>
+						<li>Barriers included siloed professional cultures, differing identities and inconsistent data-sharing practices.</li>
+						<li>Structural alignment was necessary, but relational and cultural factors such as trust, collaboration and shared purpose were critical for integration to work in practice.</li>
+						<li>There was limited empirical evidence on what successful neighbourhood integration looks like in urban UK contexts.</li>
+					</ul>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>The rapid review did not report quantitative data or statistical measures.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Use the findings to develop locally tailored strategies for neighbourhood integration in health and social care.</li>
+						<li>Recognise that structural reforms alone are insufficient; investment in relational leadership, joint training and trust-building mechanisms is essential.</li>
+						<li>Strengthen evaluation frameworks to include measurable outcomes, user perspectives and long-term follow-up.</li>
+					</ul>
+
+					<h3>Limitations</h3>
+					<ul>
+						<li>There was a lack of empirical research and robust evaluation studies on neighbourhood integration in the UK.</li>
+						<li>Service user, carer and frontline staff perspectives were limited, restricting understanding of lived experience.</li>
+						<li>The focus on a single city context may limit generalisability.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This review emphasises that neighbourhood integration is fundamentally relational and cultural. Leadership, shared purpose and trust were central to success, while professional silos and inconsistent information-sharing continued to fragment care.</p>
+					<p>From an equity angle, these relational dynamics translate directly into different experiences between neighbourhoods. Areas with stronger collaborative networks were more able to offer timely, coordinated support, while others risked perpetuating gaps in access and quality.</p>
+					<p>The report also highlights evidence gaps, particularly around service user and carer experiences. Without these perspectives, it is difficult to judge whether integration is improving equity in outcomes. The findings support a place-based approach where integration is used to build local relationships and shared ownership of goals, not only to reorganise structures.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="older adults, multimorbidity, primary care, social services, determinants of health">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Multimorbidity and neighbourhood integration">
+					</div>
+					<div class="info-text2">
+						<h3>Progress towards integrated primary care and social services for older adults with multimorbidity</h3>
+						<p>Review of evidence, provision and policy progress on integrating primary care and social services for older adults with multimorbidity in England.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1186/s12877-021-02618-8" target="_blank">
+											Dambha-Miller, H., Griffin, S.J., Kinmonth, A.L., Mars, T. (2021)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Progress towards integrated primary care and social services for older adults with multimorbidity in England. <i>BMC Geriatrics</i>, 21(1), 692.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Integration efforts have largely focused on individual-level services, with limited progress towards multi-level or multi-sector coordination.</li>
+						<li>Broader determinants such as housing, social isolation and economic deprivation are increasingly recognised as critical for effective integration for older adults with multimorbidity.</li>
+						<li>Policymakers need to allow time for integration to develop, so new structures, relationships and governance arrangements can mature.</li>
+						<li>A tension remains between top-down frameworks and bottom-up initiatives, pointing to the need for whole-systems approaches that accommodate local flexibility.</li>
+					</ul>
+
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Develop integrated care strategies that reach beyond organisational boundaries to address social and environmental determinants of health.</li>
+						<li>Support sustained, locally adaptive integration and avoid frequent restructuring that disrupts relationship-building.</li>
+						<li>Ensure national reforms are sensitive to local contexts and do not undermine community-driven integration efforts.</li>
+					</ul>
+
+					<h3>Limitations</h3>
+					<ul>
+						<li>There is limited empirical evidence of multi-level integration in England; most studies focus on specific service models or pilots.</li>
+						<li>Robust evaluation data on long-term outcomes, especially equity and population health, are lacking.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This review highlights a gap between policy rhetoric about whole-person, whole-system integration and the reality of practice, which remains focused on individual-level interventions. For older adults with multimorbidity, this means wider determinants such as housing and social isolation are often insufficiently addressed.</p>
+					<p>From an equity standpoint, integration that is confined to clinical and social care services is unlikely to reduce structural disadvantages affecting older people. The authors emphasise the need for time and stability so local relationships and governance can develop, warning that rapid restructuring without relational investment can entrench gaps between well-resourced and under-resourced systems.</p>
+					<p>The findings suggest that neighbourhood-level integration, grounded in local partnerships that span health, social care and community sectors, offers a route to addressing social determinants. However, this requires national policies that support local flexibility, provide sufficient resources and explicitly prioritise equitable outcomes.</p>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+			<br>
+
+<!--FURTHER ANALYSIS-->
+			<h2>Further Analysis</h2>
+			<div class="further-analysis">
+				<div class="analysis-item">
+					<img src="images/underserved-image1.jpg" alt="Analysis 1 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Ethnic Disparities in Access to Care</h4>
+						<p>Data showing disparities in access across different ethnic groups</p>
+					</div>
+					<a href="furtheranalysis1.html" class="analysis-button">Read More</a>
+				</div>
+
+				<div class="analysis-item">
+					<img src="images/underserved-image2.jpg" alt="Analysis 2 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
+					</div>
+					<a href="link-to-analysis2.html" class="analysis-button">Read More</a>
+				</div>
+
+				<div class="analysis-item">
+					<img src="images/underserved-image3.jpg" alt="Analysis 3 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
+					</div>
+					<a href="link-to-analysis3.html" class="analysis-button">Read More</a>
+				</div>
+			</div>
+
+		</section>
+		<ul class="actions special">
+			<li><a href="topicsmain.html" class="button primary">Back to topics</a></li>
+		</ul>
+
+	</div>
+	<!-- Footer -->
+	<footer id="footer">
+
+	</footer>
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<ul>Images retrieved from The Centre for Ageing Better's Age-positive image library</ul>
+	</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/js/main.js"></script>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
