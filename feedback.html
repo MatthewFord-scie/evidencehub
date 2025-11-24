@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html lang="en-GB">
+<head>
+    <title>Stakeholder engagement</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* page-specific light styles that sit on top of main.css */
+        .card { border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 1.75rem; margin: 1.5rem 0; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (max-width: 980px){ .grid.two { grid-template-columns: 1fr; } }
+        .muted { color: var(--muted, #666); font-size: 0.95rem; }
+        .success { color: #0b7a3a; }
+        .warning { color: #a15d00; }
+        .error { color: #a1002b; }
+        .inline { display: inline-flex; align-items: center; gap: .5rem; }
+        .small { font-size: .9rem; }
+        .btn { display:inline-block; background:#1b75d0; color:#fff !important; padding:.8rem 1.1rem; border-radius:10px; text-decoration:none; font-weight:600; }
+        .btn.secondary { background:#444; }
+        .btn:disabled { opacity:.6; cursor:not-allowed; }
+        input[type="email"], input[type="datetime-local"] { width:100%; padding:.8rem 1rem; border-radius:10px; border:1px solid #ddd; }
+        label { font-weight:600; }
+        form .row { display:grid; grid-template-columns: 1fr; gap: .8rem; margin:.8rem 0 0.2rem; }
+        .badge { display:inline-block; font-size:.8rem; background:#eef5ff; color:#114a97; padding:.2rem .5rem; border-radius:8px; margin-left:.4rem; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0; }
+        .callout { background:#f7f9fc; border:1px solid #e5edf8; border-radius:14px; padding:1rem 1.2rem; }
+        .kicker { text-transform:uppercase; letter-spacing:.06em; font-size:.85rem; color:#555; }
+        /* stack options vertically */
+        .stack { display:block; }
+        .stack > div { margin: 1.25rem 0; }
+
+    </style>
+</head>
+<body class="is-preload">
+<div id="wrapper">
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo"><img src="images/EquityHubLogo-White2.png" alt="Logo" style="width: 50%" /></a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="index.html">About the hub</a></li>
+            <li><a href="topicsmain.html">Our topics</a></li>
+            <li><a href="topicsmain.html">Chart of the week</a></li>
+            <li><a href="glossary.html">Glossary of terms</a></li>
+            <li class="active"><a href="stakeholder-engagement.html">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+        <section class="post">
+            <header class="major">
+                <h1>Feedback</h1>
+                <p>We appreciate your time in reviewing the Social Care Equity Evidence Hub.<br>
+                    Your feedback will help us improve this resource.</p>
+            </header>
+
+            <div class="grid">
+
+                <!-- Intro video -->
+                <section class="card">
+                    <div class="kicker">Introductory video</div>
+                    <h2>What is the evidence hub?</h2>
+                    <div class="video-wrapper" aria-label="introductory video">
+                        <iframe src="https://www.youtube.com/embed/Ix_tNxtXWqo?si=azcEq4xxuvL4_tZC" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </section>
+
+
+                <!-- Actions grid -->
+                <section class="card">
+                        <div>
+                            <h3 class="inline">Complete a short survey <span class="badge">Open 24th Nov - 5th Dec</span></h3>
+                            <p class="small muted" style="margin-top:.6rem;">Live survey links:
+                            </p>
+                            <button class="btn"
+                                    type="button"
+                                    onclick="window.open('https://careequity.org.uk/survey-professionals.html', '_blank');">
+                                Survey for professionals
+                            </button>
+                            <button class="btn"
+                                    type="button"
+                                    onclick="window.open('https://careequity.org.uk/survey-experience.html', '_blank');">
+                                Survey for people with lived experience, unpaid carers and family members
+                            </button>
+                        </div>
+                </section>
+
+                <!-- Contacts -->
+                <section class="card">
+                    <h2>Further info or questions</h2>
+                    <p>Please contact <strong>Matthew Ford:</strong> <a href="mailto:Matthew.Ford@scie.org.uk">Matthew.Ford@scie.org.uk</a> or <strong>Tasnim Rahman:</strong> <a href="mailto:Tasnim.Rahman@scie.org.uk">Tasnim.Rahman@scie.org.uk</a></p>
+                </section>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul>Images retrieved from the Centre for Ageing Better's Age-positive image library</ul>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- Page logic: simple email submits via mailto, plus date validation for 1:1 fallback -->
+
+<!-- Apps Script submission (sends to Google Sheet) -->
+<!-- Apps Script submission (Google Sheet; no CORS preflight) -->
+<script>
+    (function(){
+        // Your live endpoint + shared secret
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbzNdksgJMzwcK3IwzwhYaet1cfV-abEfy75M5BCJKliLsIcl8xpS4dD7LA-RwImDTU/exec?token=matthew';
+
+        function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+        function setMsg(el, txt, cls){ el.textContent = txt; el.className = 'small ' + (cls||''); }
+
+        // Use FormData to avoid preflight/CORS issues
+        async function postInterest(payload){
+            const fd = new FormData();
+            Object.entries(payload).forEach(([k,v]) => fd.append(k, v));
+            const res = await fetch(GAS_URL, { method: 'POST', body: fd }); // no headers
+            let data = null;
+            try { data = await res.json(); } catch(e) {}
+            if(!res.ok){
+                const msg = (data && data.message) ? data.message : `HTTP ${res.status}`;
+                throw new Error(msg);
+            }
+            return data || { status: 'ok' };
+        }
+
+        // Grab forms and neutralise any legacy actions
+        const wsForm = document.getElementById('workshopForm');
+        const svForm = document.getElementById('surveyForm');
+        if (wsForm) wsForm.setAttribute('action', '#');
+        if (svForm) svForm.setAttribute('action', '#');
+
+        // ===== Workshop form =====
+        if (wsForm) {
+            const wsEmail = document.getElementById('workshopEmail');
+            const wsMsg   = document.getElementById('workshopMsg');
+            const wsHP    = document.getElementById('workshopHP'); // honeypot (hidden text input)
+
+            wsForm.addEventListener('submit', async function(e){
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                e.stopPropagation();
+                e.preventDefault();
+
+                const email = (wsEmail.value || '').trim();
+                if (wsHP && wsHP.value) return false; // bot/honeypot
+                if (!isValidEmail(email)) { setMsg(wsMsg, 'Please enter a valid email.', 'error'); return false; }
+
+                setMsg(wsMsg, 'Submitting…', 'muted');
+                try {
+                    const out = await postInterest({ email, type: 'workshop' });
+                    if (out && out.status === 'ok') {
+                        setMsg(wsMsg, 'Thanks! we’ll email you the Teams link shortly.', 'success');
+                        wsForm.reset();
+                    } else {
+                        setMsg(wsMsg, `Something went wrong: ${out && out.message ? out.message : 'unknown error'}`, 'error');
+                    }
+                } catch (err) {
+                    setMsg(wsMsg, `Network/server error: ${err.message || err}`, 'error');
+                }
+                return false;
+            }, true); // capture phase to beat older listeners
+        }
+
+        // ===== Survey form =====
+        if (svForm) {
+            const svEmail = document.getElementById('surveyEmail');
+            const svMsg   = document.getElementById('surveyMsg');
+            const svHP    = document.getElementById('surveyHP'); // honeypot
+
+            svForm.addEventListener('submit', async function(e){
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                e.stopPropagation();
+                e.preventDefault();
+
+                const email = (svEmail.value || '').trim();
+                if (svHP && svHP.value) return false;
+                if (!isValidEmail(email)) { setMsg(svMsg, 'Please enter a valid email.', 'error'); return false; }
+
+                setMsg(svMsg, 'Submitting…', 'muted');
+                try {
+                    const out = await postInterest({ email, type: 'survey' });
+                    if (out && out.status === 'ok') {
+                        setMsg(svMsg, 'Got it! we’ll send the survey link when it opens.', 'success');
+                        svForm.reset();
+                    } else {
+                        setMsg(svMsg, `Something went wrong: ${out && out.message ? out.message : 'unknown error'}`, 'error');
+                    }
+                } catch (err) {
+                    setMsg(svMsg, `Network/server error: ${err.message || err}`, 'error');
+                }
+                return false;
+            }, true);
+        }
+    })();
+</script>
+
+
+</body>
+</html>
