@@ -1,0 +1,549 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Workforce</title>
+	<link rel="icon" type="image/x-icon" href="images/favicon.png">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		/* Ensures the chart stays within a fixed size */
+		#fin-chart-container {
+			width: 80%;
+			max-width: 800px;
+			height: 400px;  /* FIXED HEIGHT to prevent infinite growth */
+			margin: auto;
+			position: relative;
+		}
+
+		/* Prevents unwanted infinite resizing */
+		canvas {
+			width: 100% !important;
+			height: 100% !important;
+			display: block;
+			resize: none;  /* Prevents the chart from growing infinitely */
+		}
+	</style>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><img src="images/EquityHubLogo-White2.png" alt="Logo" style="width: 50%" /></a>
+	</header>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul class="links">
+			<li> <a href="index.html">About the Hub</a></li>
+			<li class="active"><a href="topicsmain.html">Our topics</a></li>
+			<li><a href="chartoftheweek.html">Chart of the week</a></li>
+			<li><a href="glossary.html">Glossary of terms</a></li>
+			<li><a href="feedback.html">Feedback</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main">
+		<!-- Post -->
+		<section class="post">
+			<header class="major">
+				<h1>Workforce</h1>
+				<div class="box" style="background-color: #57349e; border-radius: 10px; padding: 24px; color: white; line-height: 1.6; letter-spacing: 0.2px; text-align: left !important;">
+					<h3 style="text-transform: none; margin-top: 0; font-weight: 700; color:#f0f0f0; letter-spacing: 0.5px; text-align: left !important;">What is the ‘workforce’ topic?</h3>
+
+					<p style="letter-spacing: 0.5px; text-align: left !important;">
+						The workforce topic focuses on the people who provide care and support across adult social care. It covers pay, working conditions, wellbeing, skills and access to training. It also looks at how recruitment, retention and workplace culture affect the quality and safety of care.<br><br>
+
+						Workforce issues are central to equity. Staff experience unequal pay, insecure contracts and uneven access to training and progression. International recruits face visa-related pressures, and staff from ethnic minority backgrounds report lower chances of career development. Differences in digital skills, supervision and leadership support also shape the opportunities available to staff across the sector.<br><br>
+
+						This topic also considers how technology, blended learning and digital systems can support or hinder the workforce. Some staff benefit from flexible digital learning, while others need tailored support to build confidence and skills. Without this support, digital change can widen existing inequalities.<br><br>
+
+						Improving workforce conditions means investing in fair pay, high-quality training, supervision and compassionate leadership. It also requires tackling structural inequalities that limit progression, recognition and support. Strengthening the workforce is a core part of building an equitable care system for both staff and the people who rely on them.<br><br>
+
+						Note: This topic is under development and we are continuing to add content.
+					</p>
+				</div>
+			</header>
+
+			<!--								KEY-->
+<!--			<div class="key">-->
+<!--				<div class="key-item age-group">-->
+<!--					Groups by Demographic Factors-->
+<!--				</div>-->
+<!--				<div class="key-item socio-economic-group">-->
+<!--					Groups by Social and Economic Factors-->
+<!--				</div>-->
+<!--				<div class="key-item health-status-group">-->
+<!--					Groups by Health Status-->
+<!--				</div>-->
+<!--			</div>-->
+
+			<!--								KEY END-->
+
+			<br>
+			<div class="search-container">
+				<input type="text" id="searchInput" placeholder="Search for evidence..." />
+			</div>
+
+			<select id="tagInput">
+				<option value="">-- Select a tag --</option>
+
+				<option value="burnout">Burnout</option>
+				<option value="care staff">Care Staff</option>
+				<option value="digital skills">Digital Skills</option>
+				<option value="diversity and inclusion">Diversity and Inclusion</option>
+				<option value="international recruitment">International Recruitment</option>
+				<option value="learning and development">Learning and Development</option>
+				<option value="leadership">Leadership</option>
+				<option value="pay">Pay</option>
+				<option value="technology">Technology</option>
+				<option value="training">Training</option>
+				<option value="video consultations">Video Consultations</option>
+				<option value="visa">Visa</option>
+				<option value="wellbeing">Wellbeing</option>
+				<option value="workforce">Workforce</option>
+			</select>
+
+
+			<div class="info-module2" data-tags="workforce, staff wellbeing, turnover, safe staffing, social work">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Workforce wellbeing and turnover">
+					</div>
+					<div class="info-text2">
+						<h3>Wellbeing and staff turnover in the adult social care workforce</h3>
+						<p>Mixed methods study exploring how unsafe staff-to-service ratios affect wellbeing, practice quality and intentions to leave the profession.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1093/bjsw/bcae019" target="_blank">
+											McFadden, P., et al. (2024)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Perceptions of safe staffing, self-reported mental wellbeing and intentions to leave the profession among UK social workers: a mixed methods study.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>Almost two thirds of social workers said their service did not operate with a safe staff-to-service ratio.</li>
+						<li>More than 75 per cent of staff who took between 11 and 20 sick days worked in settings without safe staffing levels.</li>
+					</ul>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>England had the highest proportion of staff working in unsafe staff-to-service ratios, followed by Northern Ireland.</li>
+						<li>Staff in unsafe conditions were twice as likely to plan to leave their organisation compared with colleagues in safer environments.</li>
+						<li>Workload pressures were increasing, with insufficient staffing to meet care needs and growing concerns about unsafe working conditions.</li>
+						<li>Staff reported compromised practice, poorer decision-making and difficulties following procedures due to being overstretched.</li>
+						<li>Teams lacked capacity to cover absences or annual leave, leading to frequent overtime and pressure on colleagues.</li>
+						<li>Administrative tasks were prioritised over direct work, reducing time with people who draw on care and support.</li>
+						<li>Wellbeing was negatively affected; staff described burnout, reduced resilience and unmanageable caseloads.</li>
+						<li>Post-COVID pressures persisted, with concerns about unrealistic demands, limited support from senior leaders and feeling unheard by managers.</li>
+						<li>High turnover and intentions to leave were driven by cumulative daily pressures and frustration that concerns were not addressed.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study highlights the pressures facing the adult social care workforce and how limited capacity affects staff wellbeing and safe practice. Respondents described burnout from covering understaffed shifts, low pay and being unable to take leave without increasing workloads for colleagues. These pressures reduced opportunities for training and career progression and contributed to high turnover, including among newly qualified social workers.</p>
+					<p>Staff reported having less time for personalised work with people who draw on care and support, with administrative tasks often taking priority. This has implications for quality, experience and outcomes. The findings reflect a national issue with workforce capacity and sustainability.</p>
+					<p>The study supports calls for urgent action to increase workforce capacity, strengthen supervision and improve training pathways. Current staffing conditions fall short of recommended guidance, such as the British Association of Social Workers’ expectation that 80 per cent of time should be spent engaging with people and 20 per cent on administration.</p>
+					<p>Limitations included limited ethnic diversity among respondents and an overrepresentation of participants from Northern Ireland. The authors also note that those who responded to open-ended questions may have held strong views on the issues discussed.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="care staff, pay, wellbeing, workforce, leadership">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Quality of life in the social care workforce">
+					</div>
+					<div class="info-text2">
+						<h3>Recommendations to improve the quality of life of the adult social care workforce in England</h3>
+						<p>Qualitative study identifying what supports or undermines quality of life at work for the adult social care workforce, with actions for employers and national policymakers.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://kar.kent.ac.uk/93721/" target="_blank">
+											Towers, A., et al. (2022)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Quality of life at work: what it means for the adult social care workforce in England and recommendations for action.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>Twenty-one per cent of the social care workforce are from diverse ethnic backgrounds, compared with only 15 per cent of managers.</li>
+					</ul>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Quality of life at work is shaped by organisational and financial resources. Staff need enough time, support and equipment to work safely.</li>
+						<li>Low pay and financial insecurity contribute to feeling undervalued and affect overall wellbeing.</li>
+						<li>Staff need more choice and control over shifts, and access to training and learning opportunities.</li>
+						<li>Positive workplace cultures depend on good models of care, recognition of skills, strong leadership, trust and access to advice and support.</li>
+						<li>Diversity and inclusion are essential, as staff from ethnic minority backgrounds face fewer opportunities for progression.</li>
+						<li>Supportive strategies include employee assistance programmes, staff surveys, discount schemes, flexible shifts and leave, regular check-ins, virtual catch-ups, mental health first aiders, team activities and communication tools for lone workers.</li>
+						<li>Recommendations focus on improving resources, respecting and empowering care workers, strengthening relationships and promoting compassionate, representative leadership.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study highlights how workforce wellbeing is closely linked to the quality of care provided. Many of the pressures described—low pay, limited progression, rising workloads and inconsistent support—contribute to high turnover and recruitment difficulties across the sector.</p>
+					<p>Improving pay and conditions, strengthening workplace cultures and offering reliable mental health and peer support were identified as important for retention. Staff also emphasised the need for inclusive leadership that reflects the workforce and values their experience.</p>
+					<p>The findings suggest that quality of life at work is not an optional extra but a requirement for sustainable, high-quality care. Investing in staff support, training and fair workplace cultures can help build a more stable and equitable workforce, with benefits for both staff and people who draw on care and support.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="care staff, visa, international recruitment, workforce">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="International recruitment in adult social care">
+					</div>
+					<div class="info-text2">
+						<h3>International recruitment in adult social care</h3>
+						<p>Study exploring how the Health and Care Worker visa affects international recruitment, workforce stability and the experiences of care workers and providers.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://www.ucl.ac.uk/epidemiology-health-care/sites/epidemiology_health_care/files/visa_study_phase_1_report.pdf" target="_blank">
+											Kharicha, K., et al. (2023)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Understanding the impact of changes to the UK Health and Care Visa System on the adult social care workforce in England. Phase 1: The Visa Study.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>Care workers accounted for 50 per cent of all Health and Care Worker visas in 2023.</li>
+						<li>International recruits rose from 4 per cent (2021) to 11 per cent (2022).</li>
+						<li>Over 60 per cent of international care workers were aged 25–39 years.</li>
+						<li>Sixty-two per cent had been in the UK for six months or less when interviewed for their roles.</li>
+					</ul>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>The 2022 visa expansion enabled care workers to apply under the Health and Care Worker visa, helping address severe staffing shortages.</li>
+						<li>Care providers reported challenges around sponsorship costs, compliance requirements and ethical recruitment duties.</li>
+						<li>International care workers faced risks including financial exploitation, long working hours and uncertainty about rights linked to visa dependency.</li>
+						<li>Policy implications include the need for stronger safeguards, clearer guidance and monitoring of wellbeing to support ethical, sustainable recruitment.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study examines the impact of extending the Health and Care Worker visa to care workers in 2022. While international recruitment increased and helped ease staffing shortages, the findings show that the current system exposes workers and providers to significant pressures.</p>
+					<p>Care providers faced the financial and administrative burdens of sponsorship and compliance. Internationally recruited care workers reported experiences that reflected wider systemic issues, including exploitation, excessive hours and vulnerability created by restrictive visa conditions.</p>
+					<p>The paper raises questions about the long-term sustainability of relying on international recruitment without parallel investment in workforce planning, pay and support. Strengthening protections and providing clearer guidance are recommended to ensure a fair and resilient approach to international recruitment in adult social care.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="burnout, pay, care staff, workforce, inequality">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Inequality and burnout among care workers">
+					</div>
+					<div class="info-text2">
+						<h3>Inequality and burnout among care workers during and after the pandemic</h3>
+						<p>Qualitative study examining how low-paid health and social care workers experienced burnout, inequality and the UK’s pandemic response.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.17635/lancaster/thesis/240" target="_blank">
+											Buckley, T. (2024)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									‘All about the NHS and what about the rest of us?’: exploring how low-paid health and social care workers construct key stakeholders and account for the UK's response to the COVID-19 pandemic.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>Health and social care workers with two years’ experience earned an average of £1.80 less per hour than equivalent NHS workers.</li>
+						<li>On average, health and social care workers spent seven hours per week working unpaid.</li>
+					</ul>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Pay inequality was a consistent theme: health and social care workers earned significantly less than NHS colleagues with similar experience.</li>
+						<li>In 2023, much of the sector relied on minimum-wage work, contributing to insecurity and low morale.</li>
+						<li>During COVID-19, workers could not work from home and reported concerns about basic needs such as food availability during lockdowns.</li>
+						<li>Low-paid workers felt the UK government reacted slowly, with constantly changing guidance increasing workplace stress.</li>
+						<li>Participants felt the public narrative and policy response were “all about the NHS,” reinforcing feelings of being undervalued and seen as inferior to NHS staff.</li>
+						<li>Limited PPE access and unclear communication increased insecurity, moral distress and concerns about safe practice.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study shows how care workers were marginal in the UK’s pandemic planning and response. Burnout was already common before COVID-19, but rising demand, low pay and insecure contracts intensified pressure and left staff with little protection when isolated or unwell.</p>
+					<p>The findings point to systemic inequities. Poor pay, limited support and weak recognition undermined wellbeing and increased vulnerability, especially for workers expected to deliver frontline care without adequate equipment or clear guidance.</p>
+					<p>The study calls for urgent action to address economic disparities, improve working conditions and ensure that adult social care is treated as an equal partner to the NHS in future crisis planning. A more consistent, inclusive approach could help strengthen workforce resilience and reduce burnout across care settings.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="training, digital skills, workforce, technology, learning and development">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Digital skills of NI social care workforce">
+					</div>
+					<div class="info-text2">
+						<h3>Digital skills of the Northern Ireland social care workforce</h3>
+						<p>Survey study examining digital skills, confidence and attitudes toward technology for learning and development among the Northern Ireland social care workforce.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.2196/22060" target="_blank">
+											Synnott, J., et al. (2020)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									The digital skills, experiences and attitudes of the Northern Ireland social care workforce toward technology for learning and development: survey study. <i>JMIR Human Factors</i>.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key statistics</h3>
+					<ul>
+						<li>Thirteen per cent of staff said they could not solve a problem with a device or digital service using online help.</li>
+						<li>Nine per cent said they could not check whether information found online was accurate.</li>
+						<li>Seven per cent said they would not be able to buy and install apps on a device.</li>
+						<li>Average confidence scores (out of 4): social care workers 3.84, social workers 3.35, social work students 3.70; overall score 3.70.</li>
+						<li>Fourteen per cent of respondents aged over 65 were not confident at all in using some technologies at work.</li>
+					</ul>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Digital skills declined with age, and confidence levels aligned closely with self-reported digital skills.</li>
+						<li>E-learning was widely valued for flexibility and time efficiency, but many staff completed it at home due to limited time or support at work.</li>
+						<li>Face-to-face learning remained preferred, though many staff were already using websites and mobile apps for informal digital learning.</li>
+						<li>A small proportion (around 10 per cent) were resistant to e-learning, often due to low skills or confidence and a need for more tailored support.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study shows that while most staff reported strong confidence in using technology, a small but notable group across all job roles had low confidence or limited skills. These staff may be at risk of being excluded from digital learning opportunities.</p>
+					<p>The findings highlight a need for targeted training and support to help build confidence and skills, particularly for older workers and those who are unsure about using digital tools. Without this support, there is a risk of creating a digital divide within the workforce.</p>
+					<p>The authors suggest that raising awareness of the benefits of digital learning and offering accessible, tailored training could improve engagement and ensure that the entire workforce can benefit from digital learning and development.</p>
+				</div>
+			</div>
+			<div class="info-module2" data-tags="technology, care staff, workforce, video consultations">
+				<button class="info-toggle2" data-quality="3">
+					<div class="info-icon2">
+						<img src="images/profit.png" alt="Building staff capacity for video consultations">
+					</div>
+					<div class="info-text2">
+						<h3>Building staff capacity for video consultations</h3>
+						<p>Scoping review and interview study examining how video consultations were used between care homes and health and social care professionals during COVID-19, and what enabled effective use.</p>
+					</div>
+					<div class="info-arrow2">&#10132;</div>
+				</button>
+
+				<div class="info-content2">
+
+					<div class="reference-quality">
+						<div class="reference">
+							<header>
+								<h3>Reference</h3>
+								<p>
+									<b>
+										<a href="https://doi.org/10.1093/ageing/afab279" target="_blank">
+											Warmoth, K., et al. (2022)
+											<i class="fas fa-lock-open" style="color: green; margin-left: 5px;"></i>
+										</a>
+									</b>
+									Using video consultation technology between care homes and health and social care professionals: a scoping review and interview study during COVID-19. <i>Age and Ageing</i>, 51(2), afab279.
+								</p>
+							</header>
+						</div>
+
+						<div class="quality-indicator2">
+							<span class="quality-label">Quality:</span>
+							<span class="quality-star" data-quality="1">&#9733;</span>
+							<span class="quality-star" data-quality="2">&#9733;</span>
+							<span class="quality-star" data-quality="3">&#9733;</span>
+						</div>
+					</div>
+
+					<h3>Key messages</h3>
+					<ul>
+						<li>Video consultations saved staff time by reducing travel and allowing more contact with people, supporting earlier intervention and prevention.</li>
+						<li>Data protection and confidentiality requirements meant many staff avoided recording appointments, often relying instead on manual note-taking.</li>
+						<li>Broadband and connectivity issues created delays and wasted staff time, affecting continuity and communication.</li>
+						<li>Strong relationships between GPs and care homes were central to successful use of video consultations, more so than formal guidance.</li>
+						<li>NHS-provided devices were valued, but unclear processes for replacing or repairing equipment highlighted a fragile support infrastructure.</li>
+					</ul>
+
+					<h3>Commentary</h3>
+					<p>This study shows that video consultations can support more flexible and responsive care, but only when staff have the training, time and support needed to use technology confidently. Having a dedicated staff member to assist with devices and facilitate the conversation was identified as a key enabler.</p>
+					<p>Access to reliable equipment, funding and technical support is essential for sustainable use. Without this, video consultations risk increasing workload rather than reducing it. The findings also point to the need for clearer processes for device management and for understanding any unintended consequences, such as additional administrative tasks or digital barriers for residents.</p>
+					<p>Overall, the study highlights that successful implementation depends on workforce capacity, stable digital infrastructure and strong relationships between care homes and health professionals.</p>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+			<br>
+
+<!--FURTHER ANALYSIS-->
+			<h2>Further Analysis</h2>
+			<div class="further-analysis">
+				<div class="analysis-item">
+					<img src="images/underserved-image1.jpg" alt="Analysis 1 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Ethnic Disparities in Access to Care</h4>
+						<p>Data showing disparities in access across different ethnic groups</p>
+					</div>
+					<a href="furtheranalysis1.html" class="analysis-button">Read More</a>
+				</div>
+
+				<div class="analysis-item">
+					<img src="images/underserved-image2.jpg" alt="Analysis 2 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
+					</div>
+					<a href="link-to-analysis2.html" class="analysis-button">Read More</a>
+				</div>
+
+				<div class="analysis-item">
+					<img src="images/underserved-image3.jpg" alt="Analysis 3 Image" class="analysis-image">
+					<div class="analysis-summary">
+						<h4>Summary heading</h4>
+						<p>Summary of further anaylsis.</p>
+					</div>
+					<a href="link-to-analysis3.html" class="analysis-button">Read More</a>
+				</div>
+			</div>
+
+		</section>
+		<ul class="actions special">
+			<li><a href="topicsmain.html" class="button primary">Back to topics</a></li>
+		</ul>
+
+	</div>
+	<!-- Footer -->
+	<footer id="footer">
+
+	</footer>
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<ul>Images retrieved from The Centre for Ageing Better's Age-positive image library</ul>
+	</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/js/main.js"></script>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
